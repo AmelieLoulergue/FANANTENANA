@@ -1,0 +1,93 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+::selection {
+    background-color: rgb(255, 230, 0);
+    color: darkgoldenrod;
+}
+
+#landing-img {
+    min-height: 500px;
+    height: 100vh;
+    max-height: 100vh;
+    background: url(img/landing-dark.jpg) top no-repeat;
+    background-size: cover;
+
+}
+
+#landing-img button {
+    color: white;
+    border: 1px solid white;
+    border-radius: 5px;
+    padding: 20px;
+    background-color: transparent;
+    transition: .5s;
+    transition-delay: .5s;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 600;
+    font-size: 25px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+}
+#landing-img button:hover {
+    color: darkgoldenrod;
+    background-color: rgb(255, 230, 0);
+    border-color: darkgoldenrod;
+    transition-delay: 0s;
+}
+
+#landing-img .titlesvg {
+    width: 50%;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+#landing-img text {
+    fill: white;
+    font-size: 40px;
+    text-align: center;
+    font-family: 'Courgette', cursive;
+    text-shadow: 0px 10px 0px black;
+}
+
+#landing-img h4 {
+    color: white;
+    font-weight: 300;
+    text-align: center;
+    font-size: 30px;
+}
+
+#landing-img .title {
+    position: relative;
+    top: 20vh;
+    transform: translateY(-50%);
+}
+
+#landing-img-light {
+    position: absolute;
+    top: 0;
+    z-index: 0; 
+    height: 100vh;
+    min-height: 500px;
+    width: 100vw;
+    background: url(img/landing-light.jpg) top no-repeat;
+    background-size: cover;
+    clip-path: circle(0% at 50% 80%);
+    transition: all 1s ease;
+}
+
+#parrain-btn:hover + #landing-img-light {
+    clip-path: circle(100% at 50% 80%);
+}
+
+.light-transition {
+
+}
