@@ -14,3 +14,23 @@ function change() {
 }
 
 change()
+
+$('nav').hover(function() {
+    $('.navp').css({
+        'opacity' : '1',
+        'right' : '0'
+    });
+    $('nav').css({
+        'width': '260px',
+        'background': 'rgba(0,0,0,.4)'
+    });
+}, function() {
+    $('.navp').css({
+        'opacity' : '0',
+        'right' : '250px'
+    });
+    $('nav').css({
+        'width': '80px',
+        'background': 'rgba(0,0,0,.2)'
+    });
+})

@@ -9,13 +9,15 @@ html, body {
     color: darkgoldenrod;
 }
 
+
+/* First full page image */
 #landing-img {
     min-height: 500px;
     height: 100vh;
     max-height: 100vh;
     background: url(img/landing-dark.jpg) top no-repeat;
     background-size: cover;
-
+    position: relative;
 }
 
 #landing-img button {
@@ -36,11 +38,12 @@ html, body {
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 3;
+    cursor: pointer;
 }
 #landing-img button:hover {
-    color: darkgoldenrod;
+    color: rgb(218, 159, 11);
     background-color: rgb(255, 230, 0);
-    border-color: darkgoldenrod;
+    border-color: rgb(218, 159, 11);
     transition-delay: 0s;
 }
 
@@ -67,7 +70,7 @@ html, body {
 
 #landing-img .title {
     position: relative;
-    top: 20vh;
+    top: 24vh;
     transform: translateY(-50%);
 }
 
@@ -75,9 +78,9 @@ html, body {
     position: absolute;
     top: 0;
     z-index: 0; 
-    height: 100vh;
+    height: 100%;
     min-height: 500px;
-    width: 100vw;
+    width: 100%;
     background: url(img/landing-light.jpg) top no-repeat;
     background-size: cover;
     clip-path: circle(0% at 50% 80%);
@@ -88,6 +91,70 @@ html, body {
     clip-path: circle(100% at 50% 80%);
 }
 
-.light-transition {
 
+/* nav bar */
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    height: 100%;
+    margin-left: 0;
+    display: table-column;
+    background: rgba(0,0,0,.2);
+    width: 80px;
+    transition: all .5s ease;
 }
+nav ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    height: inherit;
+}
+nav a {
+    text-decoration: none;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    color: white;
+}
+nav li {
+    height: 19%;
+    text-align: center;
+}
+nav li:first-child {
+    margin-bottom: 10%;
+}
+nav img {
+    height: 35px;
+    filter: brightness(10);
+    transition: all .3s ease;
+}
+.logo {
+    height: 60px;
+    margin: 10px;
+    filter: brightness(1);
+}
+.a_logo {
+    top: 20%;
+    color: #3eaddc;
+    font-weight: bold;
+}
+nav p {
+    margin: 10px;
+    white-space: nowrap;
+    position: relative;
+    transition: all .7s ease;
+    opacity: 0;
+    text-align: center;
+    right: 250px;
+}
+nav a:hover {
+    color: #3eaddc;
+}
+nav a:hover img {
+    filter: brightness(1);
+}
+
+
+/* About section */
