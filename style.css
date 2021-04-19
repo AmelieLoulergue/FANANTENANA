@@ -9,6 +9,13 @@ html, body {
     color: darkgoldenrod;
 }
 
+h1 {
+    font-family: 'Courgette', cursive;
+    text-shadow: 0px 2px 0px black;
+    color: white;
+    font-size: 50px;
+    text-align: center;
+}
 
 /* First full page image */
 #landing-img {
@@ -49,6 +56,7 @@ html, body {
 
 #landing-img .titlesvg {
     width: 50%;
+    min-width: 400px;
     position: relative;
     left: 50%;
     transform: translateX(-50%);
@@ -158,3 +166,48 @@ nav a:hover img {
 
 
 /* About section */
+#about {
+    margin: 0 40px;
+    max-width: 100vw;
+    text-align: center;
+}
+#about ul {
+    list-style: none;
+    text-align: center;
+}
+#about li {
+    border: gray solid 1px;
+    border-radius: 5px;
+    max-width: 600px;
+    text-align: center;
+    margin: auto;
+    padding: 30px;
+}
+#about p {
+    margin: 40px 45px;
+    text-align: justify;
+}
+#about h2 {
+    font-family: 'Courgette', cursive;
+    font-size: 35px;
+}
+#about .wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 80px;
+    grid-row-gap: 40px;
+    grid-template-columns: repeat(auto-fit,minmax(400px, 1fr));
+    padding: 0 40px;
+}
+#about img {
+    clip-path: circle(50%);
+    height: 250px;
+    transition: all .5s ease;
+    text-align: center;
+}
+#about img:hover {
+    height: 260px;
+}
+
+
+/*  */
