@@ -1,12 +1,12 @@
 html, body {
     margin: 0;
     padding: 0;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 
 ::selection {
-    background-color: rgb(255, 230, 0);
-    color: darkgoldenrod;
+    background-color: #3eaddc;
+    color: #dbf4ff;
     text-shadow: none;
 }
 
@@ -22,7 +22,6 @@ h1 {
 #landing-img {
     min-height: 500px;
     height: 100vh;
-    max-height: 100vh;
     background: url(img/landing-dark.jpg) top no-repeat;
     background-size: cover;
     position: relative;
@@ -36,7 +35,7 @@ h1 {
     background-color: transparent;
     transition: .5s;
     transition-delay: .5s;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-weight: 600;
     font-size: 25px;
     letter-spacing: 2px;
@@ -49,9 +48,9 @@ h1 {
     cursor: pointer;
 }
 #landing-img button:hover {
-    color: rgb(218, 159, 11);
-    background-color: rgb(255, 230, 0);
-    border-color: rgb(218, 159, 11);
+    color: #dbf4ff;
+    background-color: #3eaddc;
+    border-color: #dbf4ff;
     transition-delay: 0s;
 }
 
@@ -167,22 +166,122 @@ nav a:hover img {
 
 
 /* About section */
+.bg-animated {
+    background: linear-gradient(228deg, #89f7fe, #66a6ff);
+    background-size: 150% 150%;
+
+    -webkit-animation: Animated-bg 10s ease infinite;
+    -moz-animation: Animated-bg 10s ease infinite;
+    -o-animation: Animated-bg 10s ease infinite;
+    animation: Animated-bg 10s ease infinite;
+}
+
+.svg-bg {
+    -webkit-animation: svg-bg 20s ease infinite;
+    -moz-animation: svg-bg 20s ease infinite;
+    -o-animation: svg-bg 20s ease infinite;
+    animation: svg-bg 20s ease infinite;
+
+    filter: url(#dropshadow);
+}
+.svg-bg-d {
+    -webkit-animation: svg-bg-d 20s 3s ease infinite;
+    -moz-animation: svg-bg-d 20s 3s ease infinite;
+    -o-animation: svg-bg-d 20s 3s ease infinite;
+    animation: svg-bg-d 20s 3s ease infinite;
+
+    filter: url(#dropshadow);
+}
+
+@-webkit-keyframes Animated-bg {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+@-moz-keyframes Animated-bg {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+@-o-keyframes Animated-bg {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+@keyframes Animated-bg {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+
+@-webkit-keyframes svg-bg {
+    0%, 100%{fill: #7dd9fe;}
+    50%{fill: #71c0ff;}
+}
+@-moz-keyframes svg-bg {
+    0%, 100%{fill: #7dd9fe;}
+    50%{fill: #71c0ff;}
+}
+@-o-keyframes svg-bg {
+    0%, 100%{fill: #7dd9fe;}
+    50%{fill: #71c0ff;}
+}
+@keyframes svg-bg {
+    0%, 100%{fill: #7dd9fe;}
+    50%{fill: #71c0ff;}
+}
+
+@-webkit-keyframes svg-bg-d {
+    0%, 100%{fill: #71c0ff;}
+    50%{fill: #7dd9fe;}
+}
+@-moz-keyframes svg-bg-d {
+    0%, 100%{fill: #71c0ff;}
+    50%{fill: #7dd9fe;}
+}
+@-o-keyframes svg-bg-d {
+    0%, 100%{fill: #71c0ff;}
+    50%{fill: #7dd9fe;}
+}
+@keyframes svg-bg-d {
+    0%, 100%{fill: #71c0ff;}
+    50%{fill: #7dd9fe;}
+}
+
+#top-about {
+    width: 20%;
+    position: absolute !important;
+    left: 0;
+    top: 0;
+}
+#bottom-about {
+    position: absolute !important;
+    bottom: 0;
+    width: 100%;
+    right: 0;
+}
 #about {
-    margin: 0 40px;
+    padding: 60px 80px;
     max-width: 100vw;
     text-align: center;
+    color: white;
+    position: relative;
+}
+#about * {
+    position: relative;
+    z-index: 3;
 }
 #about ul {
     list-style: none;
     text-align: center;
 }
 #about li {
-    border: gray solid 1px;
-    border-radius: 5px;
+    border-radius: 20px;
     max-width: 600px;
     text-align: center;
     margin: auto;
     padding: 30px;
+    box-shadow: 0px 5px 11px #00000029;
 }
 #about p {
     margin: 40px 45px;
@@ -228,10 +327,15 @@ nav a:hover img {
     min-height: inherit;
 }
 #donation h1 {
-    padding: 30px 0;
+    padding: 90px 0 60px 0;
 }
 #donation .container {
     margin: 0 85px;
+    padding-bottom: 200px;
+}
+#donation h1, #donation .container {
+    position: relative;
+    z-index: 3;
 }
 #donation p {
     margin: 0 85px;
@@ -246,7 +350,7 @@ nav a:hover img {
     background-color: transparent;
     transition: .5s;
     transition-delay: .5s;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-weight: 600;
     font-size: 25px;
     letter-spacing: 2px;
@@ -277,4 +381,27 @@ nav a:hover img {
 }
 #donation button:hover ~ #donation-light-bg {
     clip-path: circle(100% at 50% 85%);
+}
+
+
+/* Testimonial section */
+.swiper-container {
+    margin: 400px 85px;
+    padding: 30px;
+    max-width: 900px;
+}
+.swiper-slide {
+    text-align: center;
+    height: auto;
+    min-height: 300px;
+    box-shadow: 0px 5px 11px #00000029;
+    background: white;
+    border-radius: 5px;
+    width: auto;
+}
+.swiper-button-prev, .swiper-button-next {
+    background: rosybrown;
+    border-radius: 50%;
+    height: 60px;
+    width: 60px;
 }

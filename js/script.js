@@ -48,4 +48,29 @@ $('document').ready(function() {
             n = 1;
         }
     }, 5000);
-})
+});
+
+const swiper = new Swiper('.swiper-container', {
+
+    direction: 'horizontal',
+    loop: true,
+    speed: 500,
+
+    slidesPerView: 1,
+
+    keyboard: {
+        enabled: true,
+    },
+    mousewheel: true,
+
+    autoplay: {
+        delay: 5000,
+        disableOnInteraction: true,
+      },
+  
+    // Navigation arrows
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+  });

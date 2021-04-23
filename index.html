@@ -7,8 +7,9 @@
         
         <!-- Google fonts -->
         <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=Courgette&family=Roboto&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Courgette&family=Poppins&display=swap" rel="stylesheet">
 
+        
         <link rel="stylesheet" type="text/css" href="style.css">
         <title>Fanantenana - Association d'aide humanitaire à Madagascar</title>
     </head>
@@ -59,7 +60,7 @@
                 </ul>
             </nav>
     
-    
+            
             <div id="landing-img">
                 <button id="parrain-btn">Je parraine</button>
                 <div id="landing-img-light"></div>
@@ -77,11 +78,41 @@
         
                     <h4><b>Aidez</b> <span id="typed">des enfants à accéder à l'éducation</span></h4>
                 </div>
-                
             </div>
+
         </header>
         
-        <div id="about">
+        <div id="about" class="bg-animated">
+            <svg version="1.1" id="top-about" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 270.5 303" xml:space="preserve">
+
+     <filter id="dropshadow" height="130%">
+        <feGaussianBlur in="SourceAlpha" stdDeviation="3"/> <!-- stdDeviation is how much to blur -->
+        <feOffset dx="2" result="offsetblur"/> <!-- how much to offset -->
+        <feComponentTransfer>
+          <feFuncA type="linear" slope="0.1"/> <!-- slope is the opacity of the shadow -->
+        </feComponentTransfer>
+        <feMerge> 
+          <feMergeNode/> <!-- this contains the offset blurred image -->
+          <feMergeNode in="SourceGraphic"/> <!-- this contains the element that the filter is applied to -->
+        </feMerge>
+      </filter>
+      
+            <path class="st0 svg-bg-d" d="M155,139c0,0,124,9,115-139S0,0,0,0v295C0,295,36,143.5,155,139z"/>
+            <path class="st1 svg-bg" d="M0,295c0,0,43-154,155-156S256,18,227,0S0,0,0,0V295z"/>
+            </svg>
+
+            <svg version="1.1" id="bottom-about" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 1506 314.9" style="enable-background:new 0 0 1000 1000;" xml:space="preserve">
+            <style type="text/css">
+                .st0{fill:#4A75CC;}
+                .st1{fill:#5784F2;}
+            </style>
+            <path class="st0 svg-bg-d" d="M738.8,238.7C621.8,303.3,506,277.1,506,277.1v37.8h1000V0c-42.5,129.3-111,44.1-278.3,75.2
+	C1104.8,98,1057.2,215.7,948.5,195.4S738.8,238.7,738.8,238.7z"/>
+            <path class="st1 svg-bg" d="M506,260.7c0,0,136.1-76.6,334.5,0s254.8-3.3,320.8-66.7c46.2-44.4,151.8-59,221.3-54.4s123.4-9.2,123.4-9.2
+                v184.4H397.7c-0.9,0-1.2-1.2-0.4-1.6L506,260.7z"/>
+            </svg>
             <h1>
                 &mdash; Qui sommes-nous ? &mdash;
             </h1>
@@ -133,7 +164,31 @@
             </div>
         </div>
 
+        <div id="testimonial">
+            <h1>
+                &mdash; Témoignages de donneurs &mdash;
+            </h1>
+
+            <div class="swiper-container">
+                <!-- Additional required wrapper -->
+                <div class="swiper-wrapper">
+                  <!-- Slides -->
+                  <div class="swiper-slide">Slide 1</div>
+                  <div class="swiper-slide">Slide 2</div>
+                  <div class="swiper-slide">Slide 3</div>
+                  
+                </div>
+              
+                <!-- If we need navigation buttons -->
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next">
+                </div>
+              </div>
+
+        </div>
+
         <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
         <script src="js/script.js"></script>
     </body>
 </html>     
