@@ -55,12 +55,8 @@ h1 {
     transition-delay: 0s;
 }
 
-#landing-img .titlesvg {
-    width: 50%;
-    min-width: 400px;
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
+.titlelogo {
+    width: 500px;
 }
 #landing-img text {
     fill: white;
