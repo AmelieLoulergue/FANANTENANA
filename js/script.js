@@ -24,6 +24,7 @@ $('nav').hover(function() {
         'width': '260px',
         'background': 'rgba(0,0,0,.4)'
     });
+    $('.logo').css({'filter': 'brightness(1)'})
 }, function() {
     $('.navp').css({
         'opacity' : '0',
@@ -33,6 +34,7 @@ $('nav').hover(function() {
         'width': '80px',
         'background': 'rgba(0,0,0,.2)'
     });
+    $('.logo').css({'filter': 'brightness(10)'})
 });
 
 $('document').ready(function() {
@@ -55,6 +57,8 @@ const swiper = new Swiper('.swiper-container', {
     direction: 'horizontal',
     loop: true,
     speed: 500,
+
+    spaceBetween: 100,
 
     slidesPerView: 1,
 

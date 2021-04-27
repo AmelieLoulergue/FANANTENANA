@@ -23,6 +23,7 @@ h1 {
     width: fit-content;
     background: linear-gradient(90deg, rgba(67,134,255,1) 0%, rgba(65,170,249,1) 50%, rgba(14,194,240,1) 100%);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
@@ -207,11 +208,10 @@ nav img {
 .logo {
     height: 60px;
     margin: 10px;
-    filter: brightness(1);
 }
 .a_logo {
     top: 20%;
-    color: #3eaddc;
+    color: #41AAF9;
     font-weight: bold;
 }
 nav p {
@@ -224,7 +224,7 @@ nav p {
     right: 250px;
 }
 nav a:hover {
-    color: #3eaddc;
+    color: #41AAF9;
 }
 nav a:hover img {
     filter: brightness(1);
@@ -244,7 +244,6 @@ nav a:hover img {
     padding: 0;
 }
 #about li {
-    border-radius: 15px;
     box-shadow: 0 15px 50px rgba(130, 136, 171, 0.1);
     transition: .5s;
     margin: 60px 0;
@@ -252,7 +251,7 @@ nav a:hover img {
 #about li:hover {
     transform: scale(1.01);
 }
-#about p {
+.card p, #about p {
     margin: 40px 45px;
     text-align: justify;
     font-size: 18px;
@@ -260,20 +259,21 @@ nav a:hover img {
     vertical-align: middle;
     display: inline-flex;
 }
-#about h2 {
+.card h2 {
     font-family: 'Courgette', cursive;
     font-size: 35px;
     width: fit-content;
-    margin: 40px auto;
+    margin: 20px auto;
     background: linear-gradient(90deg, rgba(67,134,255,1) 0%, rgba(65,170,249,1) 50%, rgba(14,194,240,1) 100%);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 #about .wrapper {
     display: grid;
     grid-template-columns: 1fr;
 }
-#about img {
+.card img {
     clip-path: circle(50%);
     height: 250px;
     transition: all .5s ease;
@@ -283,6 +283,7 @@ nav a:hover img {
 .card {
     width: 100%;
     overflow: hidden;
+    border-radius: 15px;
 }
 .card div {
     width: 50%;
@@ -300,8 +301,8 @@ nav a:hover img {
     position: relative;
 }
 .card-img::before {
-    width: 100%;
-    height: 100%;
+    width: 100vmin;
+    height: 100vmin;
     content: "";
     position: absolute;
     z-index: 0;
@@ -419,9 +420,8 @@ nav a:hover img {
 
 /* Testimonial section */
 .swiper-container {
-    margin: 400px 85px;
-    padding: 30px;
-    max-width: 900px;
+    margin: 40px auto;
+    padding: 40px;
 }
 .swiper-slide {
     text-align: center;
@@ -429,12 +429,38 @@ nav a:hover img {
     min-height: 300px;
     box-shadow: 0px 5px 11px #00000029;
     background: white;
-    border-radius: 5px;
+    border-radius: 15px;
     width: auto;
 }
 .swiper-button-prev, .swiper-button-next {
-    background: rosybrown;
+    background: linear-gradient(90deg, rgba(67,134,255,1) 0%, rgba(65,170,249,1) 50%, rgba(14,194,240,1) 100%);
+    color: white;
     border-radius: 50%;
     height: 60px;
     width: 60px;
+    box-shadow: 0px 8px 14px #00000040;
+}
+.swiper-button-prev::after, .swiper-button-next::after {
+    font-size: 20px;
+}
+.full-height {
+    height: 100%;
+}
+.card-img-2 {
+    background-image: linear-gradient(120deg, #a1c4fd, #c2e9fb);
+}
+.card-img-2::before {
+    transform: rotate(90deg);
+}
+.card-img-3 {
+    background-image: linear-gradient(225deg,#0abac2,#b2de94);
+}
+.card-img-3::before {
+    transform: rotate(180deg);
+}
+.card-img-4 {
+    background-image: linear-gradient(135deg,#8254e5,#83afe3);
+}
+.card-img-4::before {
+    transform: rotate(270deg);
 }

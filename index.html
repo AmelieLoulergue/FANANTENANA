@@ -9,7 +9,9 @@
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Courgette&family=Poppins&display=swap" rel="stylesheet">
 
-        
+        <!-- swipper.js -->
+        <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+
         <link rel="stylesheet" type="text/css" href="style.css">
         <title>Fanantenana - Association d'aide humanitaire à Madagascar</title>
     </head>
@@ -20,8 +22,8 @@
                     <li>
                         <a href="#landing-img" class="a_logo">
                             <div>
-                                <img src="img/logo.png" class="logo">
-                                <p class="navp">Fanantenana (Malgache) - Espoir</p>
+                                <img src="img/logo/logo-dove.png" class="logo">
+                                <p class="navp">Fanantenana (Malgache) <br/>-> Espoir</p>
                             </div>
                         </a>
                     </li>
@@ -45,7 +47,7 @@
                         <a href="#">
                             <div>
                                 <img src="img/icons/Testimonial.svg">
-                                <p class="navp">Témoignages de donneurs</p>
+                                <p class="navp">Témoignages de donateurs</p>
                             </div>
                         </a>
                     </li>
@@ -140,28 +142,69 @@
             </div>
         </div>
 
-        <div id="testimonial">
+        <div id="testimonial" class="container">
             <h1>
-                &mdash; Témoignages de donneurs &mdash;
+                &mdash; Témoignages de donateurs &mdash;
             </h1>
 
-            <!--
+            
             <div class="swiper-container">
-                <!-- Additional required wrapper 
                 <div class="swiper-wrapper">
-                  <!-- Slides 
-                  <div class="swiper-slide">Slide 1</div>
-                  <div class="swiper-slide">Slide 2</div>
-                  <div class="swiper-slide">Slide 3</div>
+                
+                    <div class="swiper-slide">
+                        <div class="card full-height">
+                            <div class="card-l card-img">
+                                <img src="img/pape-pp.jpg">
+                            </div>
+                            <div class="card-r card-text">
+                                <h2>Papé</h2>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt illo iure similique quas alias repellat cupiditate excepturi quam, nihil optio eum velit eaque quisquam quaerat mollitia accusantium laborum facilis possimus.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <div class="card full-height">
+                            <div class="card-r card-img card-img-2">
+                                <img src="img/mame-pp.jpg">
+                            </div>
+                            <div class="card-l card-text">
+                                <h2>Mamé</h2>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt illo iure similique quas alias repellat cupiditate excepturi quam, nihil optio eum velit eaque quisquam quaerat mollitia accusantium laborum facilis possimus.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="swiper-slide">
+                        <div class="card full-height">
+                            <div class="card-r card-img card-img-3">
+                                <img src="https://media.istockphoto.com/vectors/confused-young-man-scratching-his-head-emotions-and-body-language-vector-id1029905662?b=1&k=6&m=1029905662&s=612x612&w=0&h=cUSkrdH1Cimf58Wr0x8d8KK3Ctkb0-3-sSh6wbZQkIM=">
+                            </div>
+                            <div class="card-l card-text">
+                                <h2>Hector</h2>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt illo iure similique quas alias repellat cupiditate excepturi quam, nihil optio eum velit eaque quisquam quaerat mollitia accusantium laborum facilis possimus.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <div class="card full-height">
+                            <div class="card-r card-img card-img-4">
+                                <img src="https://cdn.dribbble.com/users/2530857/screenshots/5448238/immamul-day-2.png">
+                            </div>
+                            <div class="card-l card-text">
+                                <h2>Jean-Pedro</h2>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt illo iure similique quas alias repellat cupiditate excepturi quam, nihil optio eum velit eaque quisquam quaerat mollitia accusantium laborum facilis possimus.</p>
+                            </div>
+                        </div>
+                    </div>
                   
                 </div>
               
-                <!-- If we need navigation buttons 
                 <div class="swiper-button-prev"></div>
-                <div class="swiper-button-next">
-                </div>
-              </div>
-            -->
+                <div class="swiper-button-next"></div>
+            </div>
+            
         </div>
 
         <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
