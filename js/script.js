@@ -73,4 +73,27 @@ const swiper = new Swiper('.swiper-container', {
       nextEl: '.swiper-button-next',
       prevEl: '.swiper-button-prev',
     },
-  });
+});
+
+$('#parrain-btn').hover(function() {
+    const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+    const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
+
+    var diagonale = Math.sqrt(vw * vw + vh * vh);
+    
+    $("#landing-img-light").css({
+        'clip-path': 'circle('+diagonale+'px at 50% 90vh)'
+    });
+    $("#lightlogo").css({
+        'clip-path': 'circle('+diagonale+'px at 50% 90vh)'
+    });
+},
+function() {
+    $("#landing-img-light").css({
+        'clip-path': 'circle(0% at 50% 90vh)'
+    });
+
+    $("#lightlogo").css({
+        'clip-path': 'circle(0% at 50% 90vh)'
+    });
+})

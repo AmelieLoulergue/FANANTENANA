@@ -4,6 +4,10 @@ html, body {
     font-family: 'Poppins', sans-serif;
 }
 
+:root {
+    --prim-gradient: linear-gradient
+}
+
 ::selection {
     background-color: #3eaddc;
     color: #dbf4ff;
@@ -22,7 +26,7 @@ h1 {
 /* First full page image */
 #landing-img {
     min-height: 500px;
-    height: 100vh;
+    height: calc(100vh + 200px);
     background: url(img/landing-dark.jpg) top no-repeat;
     background-size: cover;
     position: relative;
@@ -33,8 +37,10 @@ h1 {
     border: 1px solid white;
     border-radius: 5px;
     padding: 20px;
-    background-color: transparent;
-    transition: .5s;
+    background: linear-gradient(90deg, rgba(67,134,255,1) 0%, rgba(65,170,249,1) 25%, rgba(14,194,240,1) 49.9999999999999%, transparent 50%);
+    background-size: 200% 100%;
+    background-position: 100.5%;
+    transition: all .5s;
     transition-delay: .5s;
     font-family: 'Poppins', sans-serif;
     font-weight: 600;
@@ -42,28 +48,17 @@ h1 {
     letter-spacing: 2px;
     text-transform: uppercase;
     position: absolute;
-    top: 80%;
+    top: 100%;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 3;
     cursor: pointer;
 }
 #landing-img button:hover {
-    color: #dbf4ff;
-    background-color: #3eaddc;
+    color: white;
+    background-position: -0.5%;
     border-color: #dbf4ff;
     transition-delay: 0s;
-}
-
-.titlelogo {
-    width: 500px;
-}
-#landing-img text {
-    fill: white;
-    font-size: 40px;
-    text-align: center;
-    font-family: 'Courgette', cursive;
-    text-shadow: 0px 10px 0px black;
 }
 
 #landing-img h4 {
@@ -75,8 +70,32 @@ h1 {
 
 #landing-img .title {
     position: relative;
-    top: 24vh;
-    transform: translateY(-50%);
+    top: 10vh;
+    height: 80vh;
+}
+
+.titlelogo {
+    width: auto;
+    min-height: 200px;
+    height: 40vh;
+    background: url(img/logo/logo-hd.png) center no-repeat;
+    background-size: contain;
+}
+.titlelogo:first-child {
+    filter: grayscale(1);
+    opacity: 0.5;
+    transition: all .5s;
+}
+.titlelogo:first-child:hover {
+    filter: grayscale(0);
+    opacity: 1;
+}
+.titlelogo:nth-child(2) {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    clip-path: circle(0% at 50% 200%);
+    transition: all 1s ease;
 }
 
 #landing-img-light {
@@ -92,10 +111,12 @@ h1 {
     transition: all 1s ease;
 }
 
-#parrain-btn:hover + #landing-img-light {
-    clip-path: circle(100% at 50% 80%);
+#hero-mask {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    max-width: 100vw;
 }
-
 
 /* nav bar */
 nav {
