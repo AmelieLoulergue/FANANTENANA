@@ -10,18 +10,66 @@ html, body {
 
 ::selection {
     background-color: #3eaddc;
-    color: #dbf4ff;
+    color: white;
     text-shadow: none;
 }
 
 h1 {
     font-family: 'Courgette', cursive;
-    text-shadow: 0px 3px 0px black;
     color: white;
     font-size: 50px;
     text-align: center;
-    margin: 0;
+    margin: 60px auto;
+    width: fit-content;
+    background: linear-gradient(90deg, rgba(67,134,255,1) 0%, rgba(65,170,249,1) 50%, rgba(14,194,240,1) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
+
+.container {
+    width:100%;
+    padding-right:15px; 
+    padding-left:15px;
+    margin-right:auto;
+    margin-left:auto;
+}
+@media (min-width: 576px) {
+    .container {
+        max-width:540px
+    }
+}
+
+@media (min-width: 768px) {
+    .container {
+        max-width:720px
+    }
+}
+
+@media (min-width: 992px) {
+    .container {
+        max-width:960px
+    }
+}
+
+@media (min-width: 576px) {
+    .container {
+        max-width:calc(100% - 50px)
+    }
+}
+
+@media (min-width: 992px) {
+    .container {
+        max-width:calc(100% - 90px)
+    }
+}
+
+@media (min-width: 1200px) {
+    .container {
+        max-width:60%;
+    }
+}
+
+
 
 /* First full page image */
 #landing-img {
@@ -185,121 +233,116 @@ nav a:hover img {
 
 /* About section */
 
-.svg-bg {
-    -webkit-animation: svg-bg 20s ease infinite;
-    -moz-animation: svg-bg 20s ease infinite;
-    -o-animation: svg-bg 20s ease infinite;
-    animation: svg-bg 20s ease infinite;
-
-    filter: url(#dropshadow);
-}
-.svg-bg-d {
-    -webkit-animation: svg-bg-d 20s 3s ease infinite;
-    -moz-animation: svg-bg-d 20s 3s ease infinite;
-    -o-animation: svg-bg-d 20s 3s ease infinite;
-    animation: svg-bg-d 20s 3s ease infinite;
-
-    filter: url(#dropshadow);
-}
-
-@-webkit-keyframes svg-bg {
-    0%, 100%{fill: #7dd9fe;}
-    50%{fill: #71c0ff;}
-}
-@-moz-keyframes svg-bg {
-    0%, 100%{fill: #7dd9fe;}
-    50%{fill: #71c0ff;}
-}
-@-o-keyframes svg-bg {
-    0%, 100%{fill: #7dd9fe;}
-    50%{fill: #71c0ff;}
-}
-@keyframes svg-bg {
-    0%, 100%{fill: #7dd9fe;}
-    50%{fill: #71c0ff;}
-}
-
-@-webkit-keyframes svg-bg-d {
-    0%, 100%{fill: #71c0ff;}
-    50%{fill: #7dd9fe;}
-}
-@-moz-keyframes svg-bg-d {
-    0%, 100%{fill: #71c0ff;}
-    50%{fill: #7dd9fe;}
-}
-@-o-keyframes svg-bg-d {
-    0%, 100%{fill: #71c0ff;}
-    50%{fill: #7dd9fe;}
-}
-@keyframes svg-bg-d {
-    0%, 100%{fill: #71c0ff;}
-    50%{fill: #7dd9fe;}
-}
-
-#top-about {
-    width: 20%;
-    position: absolute !important;
-    left: 0;
-    top: 0;
-}
-#bottom-about {
-    position: absolute !important;
-    bottom: 0;
-    width: 100%;
-    right: 0;
-}
 #about {
-    padding: 60px 80px;
-    max-width: 100vw;
     text-align: center;
     color: black;
-    position: relative;
-}
-#about * {
-    position: relative;
-    z-index: 3;
 }
 #about ul {
     list-style: none;
     text-align: center;
+    margin: 0;
+    padding: 0;
 }
 #about li {
-    border-radius: 20px;
-    max-width: 500px;
-    text-align: center;
-    margin: auto;
-    padding: 30px;
-    box-shadow: 0px 5px 11px #00000029;
+    border-radius: 15px;
+    box-shadow: 0 15px 50px rgba(130, 136, 171, 0.1);
     transition: .5s;
+    margin: 60px 0;
 }
 #about li:hover {
-    transform: scale(1.05);
+    transform: scale(1.01);
 }
 #about p {
     margin: 40px 45px;
     text-align: justify;
     font-size: 18px;
     color: #2f2f2f;
+    vertical-align: middle;
+    display: inline-flex;
 }
 #about h2 {
     font-family: 'Courgette', cursive;
     font-size: 35px;
+    width: fit-content;
+    margin: 40px auto;
+    background: linear-gradient(90deg, rgba(67,134,255,1) 0%, rgba(65,170,249,1) 50%, rgba(14,194,240,1) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 #about .wrapper {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-column-gap: 80px;
-    grid-row-gap: 40px;
-    grid-template-columns: repeat(auto-fit,minmax(400px, 1fr));
-    padding: 0 200px;
+    grid-template-columns: 1fr;
 }
 #about img {
     clip-path: circle(50%);
     height: 250px;
     transition: all .5s ease;
     text-align: center;
+    margin: auto;
+}
+.card {
+    width: 100%;
+    overflow: hidden;
+}
+.card div {
+    width: 50%;
+}
+.card-l {
+    float: left;
+}
+.card-r {
+    float: right;
+}
+.card-img {
+    background-image: linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%);
+    height: 100%;
+    display: inline-flex;
+    position: relative;
+}
+.card-img::before {
+    width: 100%;
+    height: 100%;
+    content: "";
+    position: absolute;
+    z-index: 0;
+    top: 0;
+    right: 0;
+    background-image: url(img/mask/img-bg.png);
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    background-size: 100% auto;
+}
+.mame .card-img::before {
+    transform: rotate(180deg);
+}
+.img-mame {
+    background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+}
+.mame {
+    margin-bottom: 150px !important;
 }
 
+@media screen and (max-width: 900px) {
+    .card-l, .card-r {
+        float: initial;
+    }
+    .card div {
+        width: 100%;
+    }
+    .card-img {
+        height: fit-content;
+        padding: 20px 0;
+    }
+    #about img {
+        height: 125px;
+    }
+    #about h2 {
+        margin: 20px auto;
+    }
+    #about p {
+        margin: 10px 45px 20px 45px;
+    }
+}
 
 /* Donation section */
 #donation {
@@ -321,7 +364,6 @@ nav a:hover img {
     padding: 90px 0 60px 0;
 }
 #donation .container {
-    margin: 0 85px;
     padding-bottom: 200px;
 }
 #donation h1, #donation .container {

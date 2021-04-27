@@ -79,7 +79,7 @@ $('#parrain-btn').hover(function() {
     const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
     const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
 
-    var diagonale = Math.sqrt(vw * vw + vh * vh);
+    var diagonale = Math.sqrt((vw/2) * (vw/2) + vh * vh);
     
     $("#landing-img-light").css({
         'clip-path': 'circle('+diagonale+'px at 50% 90vh)'
