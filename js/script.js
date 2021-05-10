@@ -22,7 +22,7 @@ $('nav').hover(function() {
     });
     $('nav').css({
         'width': '260px',
-        'background': 'rgba(0,0,0,.4)'
+        'background': 'rgba(0,0,0,.5)'
     });
     $('.logo').css({'filter': 'brightness(1)'})
 }, function() {
