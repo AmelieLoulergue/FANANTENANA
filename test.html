@@ -7,14 +7,41 @@
     <title>Document</title>
 </head>
 <body>
-<style>img {max-width: 50%;}
+    <style>
+        body {
+            background: rgb(20, 20, 20);
+        }
+    </style>
 
-#dark {
-    filter: grayscale(1) contrast(1.05) brightness(0.8);
-}
-</style>
 
-    <img src="img/landing-dark.jpg">
-    <img id="dark" src="img/landing-light.jpg">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script>
+  
+
+  $(document).ready(function(){
+
+  $.ajaxSetup({ cache: true });
+  $.getScript('https://connect.facebook.net/en_US/sdk.js', function(){
+    FB.init({
+      appId: '311713577189175',
+      version: 'v10.0' // or v2.1, v2.2, v2.3, ...
+    });
+    
+    FB.api(
+    "/oembed_page",
+    "get",
+    {"url": "https://www.facebook.com/fanantenana619"},
+    function (response) {
+      if (response && !response.error) {
+        console.log(response)
+      }
+    }
+    );
+    })
+  })
+
+  $('body').append('\u003Cdiv id=\"fb-root\">\u003C/div>\n\u003Cscript async=\"1\" defer=\"1\" crossorigin=\"anonymous\" src=\"https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&amp;version=v10.0\" nonce=\"NKP3pt7O\">\u003C/script>\u003Cdiv class=\"fb-page\" data-href=\"http://facebook.com/fanantenana619\" data-small-header=\"\" data-adapt-container-width=\"1\" data-hide-cover=\"\" data-show-facepile=\"1\" data-show-posts=\"1\">\u003Cblockquote cite=\"http://facebook.com/fanantenana619\" class=\"fb-xfbml-parse-ignore\">\u003Ca href=\"https://facebook.com/fanantenana619\">Fanantenana\u003C/a>\u003C/blockquote>\u003C/div>')
+</script>
+    
 </body>
 </html>

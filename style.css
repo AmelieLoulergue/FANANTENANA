@@ -26,6 +26,21 @@ h1 {
     background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+h1::before, h1::after {
+    content: '—';
+}
+
+@media screen and (max-width: 425px) {
+    h1 {
+        font-size: 2.3rem;
+        margin: auto;
+    }
+}
+@media screen and (max-width: 768px) {
+    h1::before, h1::after {
+        content: '';
+    }
+}
 
 .container {
     width:80%;
@@ -180,6 +195,7 @@ h1 {
     #landing-img .title {
         height: 70vh;
         top: 2vh;
+        margin: 0 10px;
     }
 
     .mobile-nav {
@@ -193,6 +209,15 @@ h1 {
     .mobile-nav img {
         height: 28px;
     }
+    #landing-img button {
+        font-size: 20px;
+        padding: 15px;
+    }
+    #landing-img h4 {
+        text-shadow: 0 0 3px black;
+        font-size: 1.8rem;
+    }
+
 }
 
 /* nav bar */
@@ -379,7 +404,7 @@ nav a:hover img {
     background-image: url(img/mask/img-bg.png);
     background-repeat: no-repeat;
     background-position: 0 0;
-    background-size: 100vmax;
+    background-size: 100%;
 }
 .mame .card-img::before {
     transform: rotate(180deg);
@@ -410,6 +435,15 @@ nav a:hover img {
     }
     #about p {
         margin: 10px 45px 20px 45px;
+    }
+}
+@media screen and (max-width: 425px) {
+    #about p {
+        margin: 30px 0;
+        font-size: 1rem;
+    }
+    .card-text p {
+        margin: 30px !important;
     }
 }
 
@@ -489,6 +523,10 @@ nav a:hover img {
 /* Testimonial section */
 #testimonial {
     margin: 150px auto;
+    position: relative;
+}
+.testimonial-container {
+    position: relative;
 }
 .swiper-container {
     margin: 40px auto;
@@ -521,7 +559,7 @@ nav a:hover img {
     background-image: linear-gradient(120deg, #a1c4fd, #c2e9fb);
 }
 .card-img-2::before {
-    transform: rotate(90deg);
+    background-image: url(img/mask/img-bg2.png);
 }
 .card-img-3 {
     background-image: linear-gradient(225deg,#0abac2,#b2de94);
@@ -533,9 +571,33 @@ nav a:hover img {
     background-image: linear-gradient(135deg,#8254e5,#83afe3);
 }
 .card-img-4::before {
-    transform: rotate(270deg);
+    background-image: url(img/mask/img-bg2.png);
+    transform: rotate(180deg);
 }
 
+@media screen and (max-width: 650px) {
+    .swiper-container {
+        padding: 0;
+        box-shadow: 0px 20px 30px #0000000f;
+    }
+    .swiper-button-prev, .swiper-button-next {
+        height: 40px;
+        width: 40px;
+    }
+    .swiper-button-next {
+        right: -20px;
+    }
+    .swiper-button-prev {
+        left: -20px;
+    }
+    .card-img img {
+        height: 125px;
+    }
+    .card-text p {
+        font-size: 1rem;
+        margin: 20px;
+    }
+}
 
 /* Facebook - results of donation */
 #result {
@@ -662,7 +724,9 @@ footer .copy {
     text-decoration: underline;
     color: lightgray;
 }
-
+.copy div {
+    font-size: 0.7rem;
+}
 @media screen and (max-width: 1000px) {
     footer .wrapper {
         grid-template-columns: 1fr;
