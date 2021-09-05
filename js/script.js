@@ -62,30 +62,70 @@ $('document').ready(function() {
 
 const swiper = new Swiper('.swiper-container', {
 
+    centeredSlides: true,
     direction: 'horizontal',
     loop: true,
-    speed: 500,
+    speed: 400,
+    effect: 'coverflow',
+    coverflowEffect: {
+        rotate: 0,
+        stretch: 0,
+        depth: 1200,
+        modifier: 1,
+        slideShadows: false,
+    },
 
-    spaceBetween: 100,
-
-    slidesPerView: 1,
-
+    
+    
+    slidesPerView: 1.5,
+    
     keyboard: {
         enabled: true,
     },
-    mousewheel: true,
-
+    mousewheel: false,
+    grabCursor: true,
     // autoplay: {
     //     delay: 5000,
-    //     disableOnInteraction: true,
-    //   },
-  
-    // Navigation arrows
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
+    //     disableOnInteraction: false,
+    //     pauseOnMouseEnter: true,
+    // },
+
+    on: {
+        init: function() {
+            var n = this.activeIndex;
+
+            this.slides[n-2].classList.add('slide-visible');
+            this.slides[n-1].classList.add('slide-visible');
+            this.slides[n].classList.add('slide-visible');
+            this.slides[n+1].classList.add('slide-visible');
+            this.slides[n+2].classList.add('slide-visible');
+        }
+    },
+
+    // Responsive breakpoints
+    breakpoints: {
+        1650: {
+            slidesPerView: 3
+        },
+        650: {
+            slidesPerView: 2
+        },
     },
 });
+
+//function on slide change for fading cards
+swiper.on('slideChange breakpoint', function() {
+    var n = swiper.activeIndex;
+
+    $('.slide-visible').removeClass('slide-visible');
+
+    swiper.slides[n-2].classList.add('slide-visible');
+    swiper.slides[n-1].classList.add('slide-visible');
+    swiper.slides[n].classList.add('slide-visible');
+    swiper.slides[n+1].classList.add('slide-visible');
+    swiper.slides[n+2].classList.add('slide-visible');
+});
+
 
 $('#parrain-btn').hover(function() {
     const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
