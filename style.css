@@ -81,6 +81,9 @@ h1::before, h1::after {
     .container {
         max-width:60%;
     }
+    #result .container {
+        max-width: 1439px;
+    }
 }
 
 
@@ -667,6 +670,221 @@ nav a:hover img {
     }
 }
 
+
+#FB_content {
+    display: flex;
+    position: relative;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+#FB_content > * {
+    flex: 1 1 auto;
+}
+.FB_video {
+    position: relative;
+}
+.playbtn {
+    content: '>';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    cursor: pointer;
+    border: none;
+    font-size: 30px;
+    line-height: 50px;
+    text-align: center;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 10px;
+    color: white;
+    background-color: rgba(255, 255, 255, .5);
+}
+.FB_video:hover .playbtn {
+    background-color: rgba(255, 255, 255, .8);
+    color: rgba(100, 100, 100, .2);
+    transform: translate(-50%, -50%) scale(1.05);
+}
+
+
+
+#FB_content .FBcontainer {
+    max-width: 300px;
+    color: white;
+    position: relative;
+    margin: 30px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --delay: 0s;
+}
+#FB_content .FBcontainer:nth-child(2) {--delay: 0.2s}
+#FB_content .FBcontainer:nth-child(3) {--delay: 0.4s}
+#FB_content .FBcontainer:nth-child(4) {--delay: 0.6s}
+#FB_content .FBcontainer:nth-child(5) {--delay: 0.8s}
+#FB_content .FBcontainer:nth-child(6) {--delay: 1s}
+
+.FBcontainer::before {
+    content: '';
+    display: block;
+    background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: -30px;
+    top: -20px;
+    z-index: 1;
+    border-radius: 20px;
+    box-shadow: 10px 10px 80px #0000004f;
+
+    animation: heightAnimated 1s ease forwards;
+    height: 0%;
+    animation-delay: var(--delay);
+}
+#FB_content .FBcontainer:nth-child(2)::before {background-image: linear-gradient(120deg, #f093fb 0%, #f5576c 100%);}
+#FB_content .FBcontainer:nth-child(3)::before {background-image: linear-gradient(to right, #fa709a 0%, #fee140 100%);}
+#FB_content .FBcontainer:nth-child(4)::before {background-image: linear-gradient(45deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%);}
+#FB_content .FBcontainer:nth-child(5)::before {background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%);}
+#FB_content .FBcontainer:nth-child(6)::before {background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);}
+#FB_content .FBcontainer a {
+    text-decoration: none;
+    color: inherit;
+}
+.user {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+
+    animation: fadeIn 1s ease forwards;
+    opacity: 0;
+    animation-delay: var(--delay);
+}
+.user img {
+    height: 50px;
+}
+.user img.fblogo {
+    justify-self: flex-end;
+    margin-left: auto;
+    margin-right: 50px;
+}
+.user h1 {
+    margin: 0 0 0 20px;
+}
+
+#FB_content .FBcard {
+    background: white;
+    color: black;
+    border-radius: 20px;
+    position: relative;
+    z-index: 10;
+    height: 400px;
+    overflow: auto;
+
+    animation: widthAnimated 1s ease forwards;
+    width: 0%;
+    animation-delay: calc(var(--delay) + 0.2s);
+}
+#FB_content .FBcard-content {
+    padding: 30px 40px 10px 40px;
+    text-align: center;
+    min-height: calc(100% - 102px);
+
+    animation: fadeIn 1s ease forwards;
+    opacity: 0;
+    animation-delay: calc(var(--delay) + 0.4s);
+}
+#FB_content .FBcard-content h1 {
+    margin-top: 0;
+}
+#FB_content .FBcard-content img {
+    max-width: 100%;
+    border-radius: 20px;
+}
+#FB_content .FBcard::-webkit-scrollbar-track {
+    margin: 10px;
+}
+#FB_content .FBcard::-webkit-scrollbar {
+    scrollbar-width: 10px;
+    width: 10px;
+    margin: 10px;
+    border-radius: 20px;
+}
+#FB_content .FBcard::-webkit-scrollbar-thumb {
+    border-radius: 20px;
+    background-color: white;
+}
+#FB_content .FBcard:hover::-webkit-scrollbar-thumb {
+    background-color: rgba(50, 50, 50, .2);
+}
+#FB_content .FBcard .interaction {
+    display: flex;
+    box-shadow: 0 0 20px rgba(100, 100, 100, .2);
+    border-radius: 20px;
+    padding: 10px;
+    position: sticky;
+    bottom: 0;
+    background: white;
+
+    animation: fadeIn 1s ease forwards;
+    opacity: 0;
+    animation-delay: calc(var(--delay) + 0.6s);
+}
+#FB_content .FBcard .interaction > * {
+    flex: 1 1 100%;
+    justify-content: baseline;
+}
+#FB_content .FBcard .interaction a:nth-child(2) button {
+    color: white;
+    background-color: #1877f2;
+    font-weight: bolder;
+    padding: 13px 10px;
+}
+#FB_content .FBcard .interaction a:nth-child(2) {
+    margin: 0 20px;
+    flex: 1 1 130%;
+}
+#FB_content .FBcard .interaction button {
+    border-radius: 20px;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    width: 100%;
+    transition: .1s ease;
+}
+#FB_content .FBcard .interaction button:hover {
+    box-shadow: 0 7px 10px #00000030;
+    transform: scale(1.08);
+}
+
+@keyframes heightAnimated {
+    from {height: 0%;}
+    to {height: 100%;}
+}
+@keyframes widthAnimated {
+    from {width: 0%;}
+    to {width: 100%;}
+}
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+.showmore {
+    border: none;
+    border-radius: 20px;
+    padding: 20px 40px;
+    font-size: 1.5rem;
+    box-shadow: 0 0 50px rgba(50, 50, 50, .5);
+    margin: 0 auto 50px auto;
+    background: white;
+    color: #00709a;
+    cursor: pointer;
+    display: block;
+}
 
 /* Footer */
 footer {

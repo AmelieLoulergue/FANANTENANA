@@ -58,6 +58,107 @@ $('document').ready(function() {
         $('html, body').animate( { scrollTop: $(page).offset().top }, speed ); // Go
         return false;
     });
+
+    //Facebook cards loading
+    var token = "EAAEbgHkKPzcBACoqww2Wj9v5imehyE3E2TxemsZA07cct2GdBDP0Ew3X1JxOEUpI49dGgzTZBButxPnOzvv9a5VPZCZClmRZAxECKtJVf6OZBFLLJBlJbDlxUdT5ZB9OhqcZCUQ5GPBE8wIK7MLaCDfCZCqMfekE1ZCGIxHZBm6FqOODnvgMHA7iT1l";
+var requestURL = 'https://graph.facebook.com/837110672968905?fields=feed.limit(6){message,properties,attachments,permalink_url}&access_token=' + token;
+
+var request = new XMLHttpRequest();
+request.open('GET', requestURL);
+request.responseType = 'json';
+request.send();
+
+request.onload = function() {
+    var cards = request.response;
+    
+    displayFB(cards);
+  }
+
+function displayFB(jsonobj) {
+    var json = jsonobj['feed'].data;
+    
+    for (var i = 0; i < json.length; i++) {
+        var subtitle = json[i].message;
+        var url = json[i].permalink_url;
+        
+        var type = coverImg = uriimg = undefined;
+
+        if (typeof json[i].attachments != "undefined") {
+            var attachments = json[i].attachments.data[0];
+            
+            var type = attachments.type;
+            var coverImg = attachments.media.image.src;
+            var uriimg = attachments.url;
+        }
+
+        var container = document.createElement('div');
+        container.className = 'FBcontainer';
+
+        var header = document.createElement('a');
+        header.innerHTML= '<div class="user"><img src="img/logo/logo-dove-white.png"><h2>Fanantenana</h2><img class="fblogo" src="img/logo/facebook.png"></div>'
+        header.href = "https://www.facebook.com/fanantenana619";
+        header.setAttribute('target', '_blank');
+        container.appendChild(header);
+
+        var card = document.createElement('div');
+        card.className = 'FBcard';
+        var cardContent = document.createElement('div');
+        cardContent.className = 'FBcard-content';
+        var h2 = document.createElement('h2');
+        var p = document.createElement('p');
+        var imgContainer = document.createElement('div');
+
+        var interaction = document.createElement('div');
+        interaction.className = 'interaction';
+        interaction.innerHTML = `<a onclick='window.open("` + url + `", "_blank", "location=yes,height=900,width=500,scrollbars=yes,status=yes")'><button>Commenter</button></a><a onclick='window.open("` + url + `", "_blank", "location=yes,height=900,width=500,scrollbars=yes,status=yes")'><button>J\'aime</button></a><a onclick='window.open("https://www.facebook.com/sharer/sharer.php?u=` + url + `", "_blank", "location=yes,height=600,width=500,scrollbars=yes,status=yes")'><button>Partager</button></a>`;
+
+        p.textContent = subtitle;
+        if (typeof json[i].attachments != "undefined") {
+            h2.textContent = attachments.title;
+
+            console.log(attachments.title);
+
+            if (typeof attachments.title == "undefined") {
+                h2.textContent = "Nouvelle publication"
+            }
+        } else {
+            h2.textContent = "Nouvelle publication"
+        }
+        cardContent.appendChild(h2);
+        cardContent.appendChild(p);
+
+        if (type == "album") {
+            var imgs = attachments.subattachments.data;
+            
+            for (var j = 0; j < imgs.length; j++) {
+                let albumImg = imgs[j].media.image.src;
+                let uriimg = imgs[j].url;
+
+                imgContainer.innerHTML += '<a target="_blank" href="' + uriimg + '"><img src="' + albumImg + '"/></a>';
+            }
+
+            cardContent.appendChild(imgContainer);
+        }
+
+        if (type == "video_autoplay" || type == "video") {
+            imgContainer.innerHTML += '<a target="_blank" href="' + uriimg + '"><div class="FB_video"><img src="' + coverImg + '"/><button class="playbtn">&#9654;</button></div></a>';
+            cardContent.appendChild(imgContainer);
+        }
+
+        if (type == "photo") {
+            imgContainer.innerHTML += '<a target="_blank" href="' + uriimg + '"><img src="' + coverImg + '"/></a>';
+            cardContent.appendChild(imgContainer);
+
+            console.log('photo added')
+        }
+
+        card.appendChild(cardContent);
+        card.appendChild(interaction);
+        container.appendChild(card);
+        document.getElementById('FB_content').appendChild(container);
+    }
+
+}
 });
 
 const swiper = new Swiper('.swiper-container', {
@@ -84,11 +185,11 @@ const swiper = new Swiper('.swiper-container', {
     },
     mousewheel: false,
     grabCursor: true,
-    // autoplay: {
-    //     delay: 5000,
-    //     disableOnInteraction: false,
-    //     pauseOnMouseEnter: true,
-    // },
+    autoplay: {
+        delay: 5000,
+        disableOnInteraction: false,
+        pauseOnMouseEnter: true,
+    },
 
     on: {
         init: function() {
