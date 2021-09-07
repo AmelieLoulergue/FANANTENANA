@@ -51,13 +51,17 @@ $('document').ready(function() {
         }
     }, 5000);
 
-
+    //Smooth scroll script
     $('.js-scrollTo').on('click', function() { // Au clic sur un élément
         var page = $(this).attr('href'); // Page cible
         var speed = 1000; // Durée de l'animation (en ms)
         $('html, body').animate( { scrollTop: $(page).offset().top }, speed ); // Go
         return false;
     });
+
+    //nav-active
+    nav_active();
+    $(document).on('scroll', nav_active);
 
     //Facebook cards loading
     var token = "EAAEbgHkKPzcBACoqww2Wj9v5imehyE3E2TxemsZA07cct2GdBDP0Ew3X1JxOEUpI49dGgzTZBButxPnOzvv9a5VPZCZClmRZAxECKtJVf6OZBFLLJBlJbDlxUdT5ZB9OhqcZCUQ5GPBE8wIK7MLaCDfCZCqMfekE1ZCGIxHZBm6FqOODnvgMHA7iT1l";
@@ -116,8 +120,6 @@ function displayFB(jsonobj) {
         if (typeof json[i].attachments != "undefined") {
             h2.textContent = attachments.title;
 
-            console.log(attachments.title);
-
             if (typeof attachments.title == "undefined") {
                 h2.textContent = "Nouvelle publication"
             }
@@ -148,8 +150,6 @@ function displayFB(jsonobj) {
         if (type == "photo") {
             imgContainer.innerHTML += '<a target="_blank" href="' + uriimg + '"><img src="' + coverImg + '"/></a>';
             cardContent.appendChild(imgContainer);
-
-            console.log('photo added')
         }
 
         card.appendChild(cardContent);
@@ -250,3 +250,28 @@ function() {
         'clip-path': 'circle(0% at 50% 90vh)'
     });
 })
+
+function nav_active() {
+    let about = $('#about').position().top;
+    let donation = $('#donation').position().top;
+    let testimonial = $('#testimonial').position().top;
+    let result = $('#result').position().top;
+
+    let h = $(window).height();
+    let y = $(window).scrollTop();
+    y = y + h/2;
+
+    $('.nav-active').removeClass('nav-active');
+
+    if (y >= result) {
+        $('#result-nav').addClass('nav-active')
+    } else
+    if (y >= testimonial) {
+        $('#testimonial-nav').addClass('nav-active')
+    } else
+    if (y >= donation) {
+        $('#donation-nav').addClass('nav-active')
+    } else {
+        $('#about-nav').addClass('nav-active')
+    }
+}

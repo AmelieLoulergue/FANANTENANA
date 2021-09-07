@@ -19,7 +19,8 @@ h1 {
     color: white;
     font-size: 50px;
     text-align: center;
-    margin: 60px auto;
+    margin: 0px auto;
+    padding: 60px;
     width: fit-content;
     background: linear-gradient(90deg, rgba(67,134,255,1) 0%, rgba(65,170,249,1) 50%, rgba(14,194,240,1) 100%);
     -webkit-background-clip: text;
@@ -224,107 +225,192 @@ h1::before, h1::after {
 }
 
 /* nav bar */
-nav {
+.nav-container {
+    display: flex;
+    position: sticky;
+    top: calc(100% - 120px);
+    z-index: 9999;
+}
+.inline-nav {
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+}
+.inline-nav svg {
+    height: 40px;
+    width: 40px;
+    overflow: visible;
+    transition: .5s;
+}
+.inline-nav svg * {
+    transition: .5s;
+}
+.inline-item {
+    margin: auto;
+    padding: 25px;
+    background: white;
+    border-radius: 100%;
+    box-shadow: 0 0 30px #01010e14;
+    height: 40px;
+    width: 40px;
+    position: relative;
+    transition: 0s;
+    cursor: pointer;
+}
+.nav-logo {
+    height: 75px;
     position: fixed;
+    left: 35px;
+    top: 35px;
+    filter: drop-shadow(0 0 10px rgba(158, 158, 158, 0.5));
+    z-index: 9999;
+    cursor: pointer;
+}
+.item-bg {
+    opacity: 0;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-image: linear-gradient(45deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%);;
     top: 0;
     left: 0;
-    z-index: 9999;
-    height: 100%;
-    margin-left: 0;
-    display: table-column;
-    background: rgba(0,0,0,.2);
-    width: 80px;
-    transition: all .5s ease;
+    border-radius: inherit;
+    z-index: -1;
+    transition: .5s;
 }
-nav ul {
-    padding: 0;
-    margin: 0;
-    list-style: none;
-    height: inherit;
+.inline-item:nth-child(2) .item-bg {background-image: linear-gradient(120deg, #a1c4fd, #c2e9fb);}
+.inline-item:nth-child(3) .item-bg {background-image: linear-gradient(225deg,#0abac2,#b2de94);}
+.inline-item:nth-child(4) .item-bg {background-image: linear-gradient(135deg,#8254e5,#83afe3);}
+
+
+.nav-active .item-bg {
+    opacity: 1;
 }
-nav a {
-    text-decoration: none;
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%);
-    color: white;
+.nav-active {
+    background-color: transparent;
+    transition: 0.5s;
 }
-nav li {
-    height: 19%;
-    text-align: center;
+.nav-active svg path {
+    fill: white;
 }
-nav li:first-child {
-    margin-bottom: 10%;
-}
-nav img {
-    height: 35px;
-    filter: brightness(10);
-    transition: all .3s ease;
-}
-.logo {
-    height: 60px;
-    margin: 10px;
-}
-.a_logo {
-    top: 20%;
-    color: #41AAF9;
-    font-weight: bold;
-}
-nav p {
-    margin: 10px;
-    white-space: nowrap;
-    position: relative;
-    transition: all .7s ease;
-    opacity: 0;
-    text-align: center;
-    right: 250px;
-}
-nav a:hover {
-    color: #41AAF9;
-}
-nav a:hover img {
-    filter: brightness(1);
+.nav-active svg line, .nav-active svg polyline {
+    stroke: white;
 }
 
-.mobile-nav {
-    width: 100vw;
-    position: sticky;
-    position: -webkit-sticky;
-    background: rgba(0,0,0,.4);
-    color: white;
-    top: calc(100% - 75px);
-    height: 75px;
-    z-index: 9999;
-    text-align: center;
-    display: none;
+@media screen and (max-width: 600px) {
+    .inline-item {
+        height: 30px;
+        width: 30px;
+    }
+    .inline-nav svg {
+        height: 30px;
+        width: 30px;
+    }
 }
-.mobile-nav > * {
-    width: 100%;
-    margin: auto;
-    padding: 5px;
-    transition: .2s ease;
+@media screen and (max-width: 500px) {
+    .inline-item {
+        height: 20px;
+        width: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 }
-.mobile-nav img {
-    height: 35px;
-    filter: brightness(10);
+
+/* First nav item animation */
+#hand-icon {
+    transform-origin: bottom;
+    animation: handanim 10s ease infinite;
 }
-.mobile-nav .a_logo img {
-    height: 50px;
-    filter: brightness(1);
+@keyframes handanim {
+    0%, 25%, 100% {transform: rotate(0deg)}
+    10% {transform: rotate(-8deg)}
+    20% {transform: rotate(4deg)}
 }
-.mobile-nav p {
-    margin: 0;
+.flare1, .flare2, .flare3 {
+    animation: flickering 10s infinite;
 }
-.mobile-nav a {
-    text-decoration: none;
-    color: white;
+.flare2 {animation-delay: .3s;}
+.flare3 {animation-delay: .8s;}
+@keyframes flickering {
+    0%, 15% {opacity: 0;}
+    10%, 25% {opacity: 1;}
 }
-.mobile-nav a:hover, .mobile-nav a:hover img {
-    color: #3eaddc;
-    filter: brightness(1);
+
+/* Second nav item animation */
+#tophand {
+    animation: tophand 10s linear infinite;
+    transform-origin: left;
 }
-.mobile-nav:hover {
-    background: rgba(0,0,0,.6);
+@keyframes tophand {
+    0%, 25%, 50%, 100% {
+        transform: rotate(0);
+    }
+    27% {
+        transform: rotate(-2deg);
+    }
+    35% {
+        transform: rotate(8deg);
+    }
+}
+.heart {
+    animation: heart 10s linear infinite;
+}
+@keyframes heart {
+    0%, 33%, 50%, 100% {opacity: 0;}
+    35%, 45% {opacity: 1;}
+}
+
+/* Third nav item animation */
+#quote1, #quote2 {
+    animation: quote 10s infinite;
+    transform-origin: bottom;
+}
+#quote2 {animation-delay: .2s;}
+@keyframes quote {
+    0%, 50%, 75%, 100% {
+        transform: rotate(0);
+    }
+    60% {
+        transform: rotate(-4deg);
+    }
+    70% {
+        transform: rotate(8deg);
+    }
+}
+
+/* Fourth nav item animation */
+.check {
+    stroke-dasharray: 190;
+    stroke-dashoffset: 190;
+    animation: dash 10s infinite;
+}
+@keyframes dash {
+    0%, 75%, 100% {
+        opacity: 1;
+        stroke-dashoffset: 0;
+    }
+    80% {opacity: 0; stroke-dashoffset: 190;}
+    80.1% {opacity: 1;}
+    95% {stroke-dashoffset: 0;}
+}
+.plank {
+    animation: jitter 10s infinite;
+    transform-origin: bottom;
+}
+@keyframes jitter {
+    0%, 75%, 100% {
+        transform: rotate(0);
+    }
+    85% {transform: rotate(-10deg);}
+    90% {transform: rotate(8deg);}
+    92% {transform: rotate(-6deg);}
+    94% {transform: rotate(4deg);}
+    96% {transform: rotate(-2deg);}
+    98% {transform: rotate(0deg);}
 }
 
 /* About section */
@@ -406,12 +492,23 @@ nav a:hover img {
     right: 0;
     background-image: url(img/mask/img-bg.png);
     background-repeat: no-repeat;
-    background-position: 0 0;
-    background-size: 100vmin;
+    background-position: 0vmin 0vmin;
+    background-size: 110vmin;
+    animation: mask-anim 6s cubic-bezier(0.075, 0.52, 0.165, 0.7) infinite alternate;
 }
 .mame .card-img::before {
     transform: rotate(180deg);
 }
+
+@keyframes mask-anim {
+    from {
+        background-position: 0vmin 0vmin;
+    }
+    to {
+        background-position: -10vmin -10vmin;
+    }
+}
+
 .img-mame {
     background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
 }
@@ -569,12 +666,15 @@ nav a:hover img {
 }
 .card-img-2::before {
     background-image: url(img/mask/img-bg2.png);
+    animation-delay: .5s;
+    animation-direction: alternate-reverse;
 }
 .card-img-3 {
     background-image: linear-gradient(225deg,#0abac2,#b2de94);
 }
 .card-img-3::before {
     transform: rotate(180deg);
+    animation-delay: 2s;
 }
 .card-img-4 {
     background-image: linear-gradient(135deg,#8254e5,#83afe3);
@@ -582,6 +682,8 @@ nav a:hover img {
 .card-img-4::before {
     background-image: url(img/mask/img-bg2.png);
     transform: rotate(180deg);
+    animation-delay: 1s;
+    animation-direction: alternate-reverse;
 }
 
 @media screen and (max-width: 650px) {
