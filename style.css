@@ -266,7 +266,7 @@ h1::before, h1::after {
     left: 35px;
     top: 35px;
     filter: drop-shadow(0 0 10px rgba(158, 158, 158, 0.5));
-    z-index: 9999;
+    z-index: 99999;
     cursor: pointer;
 }
 .item-bg {
@@ -766,12 +766,6 @@ h1::before, h1::after {
     100%{background-position:0% 2%}
 }
 
-@media screen and (max-width: 585px) {
-    #result iframe {
-        width: 300px;
-    }
-}
-
 
 #FB_content {
     display: flex;
@@ -853,6 +847,21 @@ h1::before, h1::after {
 #FB_content .FBcontainer a {
     text-decoration: none;
     color: inherit;
+}
+@media screen and (max-width: 914px) {
+    .FBcontainer::before {
+        left: -10px;
+        padding: 0 10px 30px 10px;
+    }
+    .user {
+        margin: 0 10px 10px 10px;
+    }
+    .user h2 {
+        margin: auto;
+    }
+    .user img.fblogo {
+        margin: 0 !important;
+    }
 }
 .user {
     position: relative;
