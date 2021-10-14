@@ -5,7 +5,13 @@ html, body {
 }
 
 :root {
-    --prim-gradient: linear-gradient
+    --prim-gradient: linear-gradient;
+    --grad1: linear-gradient(45deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%);
+    --grad2: linear-gradient(120deg, #a1c4fd, #c2e9fb);
+    --grad3: linear-gradient(225deg,#0abac2,#b2de94);
+    --grad4: linear-gradient(120deg,#8254e5,#83afe3);
+    --grad5: linear-gradient(120deg, #5ee7df 0%, #b490ca 100%);
+    --grad6: linear-gradient(120deg, #9795f0 0%, #fbc8d4 100%);
 }
 
 ::selection {
@@ -274,7 +280,7 @@ h1::before, h1::after {
     position: absolute;
     height: 100%;
     width: 100%;
-    background-image: linear-gradient(45deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%);;
+    background-image: linear-gradient(45deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%);
     top: 0;
     left: 0;
     border-radius: inherit;
@@ -549,76 +555,59 @@ h1::before, h1::after {
 
 /* Donation section */
 #donation {
-    background: url(img/donation1-d.jpg) center no-repeat;
-    background-size: cover;
-    color: white;
-    min-height: 800px;
-    height: 100vh;
-    z-index: -2;
-    transition: all .5s ease;
-}
-#donation .wrapper {
     position: relative;
-    height: 100%;
-    width: 100%;
-    min-height: inherit;
+    background: #151D2D;
 }
-#donation h1 {
-    padding: 90px 0 60px 0;
-}
-#donation .container {
-    padding-bottom: 200px;
-}
-#donation h1, #donation .container {
+.donation-mask-top {
     position: relative;
-    z-index: 3;
+    top: -2px;
+    z-index: 1;
+}
+.donation-mask-bottom {
+    position: relative;
+    bottom: -2px;
+    transform: rotate(180deg);
+    z-index: 1;
 }
 #donation p {
-    margin: 0 85px;
-    text-shadow: -1px 4px 2px black;
-    font-size: 20px;
-}
-#donation button {
     color: white;
-    border: 1px solid white;
-    border-radius: 5px;
-    padding: 20px;
-    background-color: transparent;
-    transition: .5s;
-    transition-delay: .5s;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 600;
-    font-size: 25px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    position: absolute;
-    left: 50%;
-    bottom: 5%;
-    transform: translate(-50%, -50%);
-    z-index: 3;
-    cursor: pointer;
-}
-#donation button:hover {
-    color: rgb(218, 159, 11);
-    background-color: rgb(255, 230, 0);
-    border-color: rgb(218, 159, 11);
-    transition-delay: 0s;
-}
-#donation-light-bg {
-    height: 100%;
-    width: 100%;
-    background: url(img/donation1-l.jpg) center no-repeat;
-    background-size: cover;
-    position: absolute;
-    top: 0;
-    z-index: 0;
-    clip-path: circle(0% at 50% 85%);
-    transition: 1s;
-}
-#donation button:hover ~ #donation-light-bg {
-    clip-path: circle(100% at 50% 85%);
 }
 
+#particles-js {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: 2;
+}
+
+.donation-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+.donation-item {
+    flex: 0 0 33.33333%;
+    text-align: center;
+}
+.donation-item div {
+    border-radius: 100%;
+    background-image: var(--grad1);
+    display: flex;
+    margin: auto;
+    padding: 30px;
+}
+.donation-item div svg {
+    height: 30px;
+    width: 30px;
+}
+.donation-item:nth-child(2) div {background-image: var(--grad2);}
+.donation-item:nth-child(3) div {background-image: var(--grad3);}
+.donation-item:nth-child(4) div {background-image: var(--grad4);}
+.donation-item:nth-child(5) div {background-image: var(--grad5);}
+.donation-item:nth-child(6) div {background-image: var(--grad6);}
 
 /* Testimonial section */
 #testimonial {

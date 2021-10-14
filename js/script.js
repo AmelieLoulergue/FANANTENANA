@@ -37,19 +37,7 @@ $('nav').hover(function() {
     $('.logo').css({'filter': 'brightness(10)'})
 });
 
-$('document').ready(function() {
-    var n = 0;
-    setInterval(() => {
-        if (n === 1) {
-            $("#donation").css('background-image', 'url(img/donation1-d.jpg)');
-            $("#donation-light-bg").css('background-image', 'url(img/donation1-l.jpg)');
-            n = 0;
-        } else {
-            $("#donation").css('background-image', 'url(img/donation2-d.jpg)');
-            $("#donation-light-bg").css('background-image', 'url(img/donation2-l.jpg)');
-            n = 1;
-        }
-    }, 5000);
+$('document').ready(function() {    
 
     //Smooth scroll script
     $('.js-scrollTo').on('click', function() { // Au clic sur un élément
@@ -159,6 +147,10 @@ function displayFB(jsonobj) {
     }
 
 }
+
+    particlesJS.load('particles-js', 'js/particlesjs-config.json', function() {
+        console.log('callback - particles.js config loaded');
+    });
 });
 
 const swiper = new Swiper('.swiper-container', {
@@ -251,27 +243,40 @@ function() {
     });
 })
 
-function nav_active() {
-    let about = $('#about').position().top;
-    let donation = $('#donation').position().top;
-    let testimonial = $('#testimonial').position().top;
-    let result = $('#result').position().top;
+var anchorfocus; var h; var result; var testimonial; var donation; var about; var y;
+$(window).on('resize', initsectioncoor)
+function initsectioncoor() {
+    about = $('#about').position().top;
+    donation = $('#donation').position().top;
+    testimonial = $('#testimonial').position().top;
+    result = $('#result').position().top;
+    
+    h = $(window).height();
+}
+initsectioncoor();
 
-    let h = $(window).height();
-    let y = $(window).scrollTop();
+function nav_active() {
+    y = $(window).scrollTop();
     y = y + h/2;
 
-    $('.nav-active').removeClass('nav-active');
-
-    if (y >= result) {
-        $('#result-nav').addClass('nav-active')
-    } else
-    if (y >= testimonial) {
-        $('#testimonial-nav').addClass('nav-active')
-    } else
-    if (y >= donation) {
-        $('#donation-nav').addClass('nav-active')
-    } else {
-        $('#about-nav').addClass('nav-active')
+    if (y >= 0 && y < donation && anchorfocus !== "about") {
+        $('.nav-active').removeClass('nav-active');
+        $('#about-nav').addClass('nav-active');
+        anchorfocus = "about";
+    }
+    if (y >= donation && y < testimonial && anchorfocus !== "donation") {
+        $('.nav-active').removeClass('nav-active');
+        $('#donation-nav').addClass('nav-active');
+        anchorfocus = "donation";
+    }
+    if (y >= testimonial && y < result && anchorfocus !== "testimonial") {
+        $('.nav-active').removeClass('nav-active');
+        $('#testimonial-nav').addClass('nav-active');
+        anchorfocus = "testimonial";
+    }
+    if (y >= result && anchorfocus !== "result") {
+        $('.nav-active').removeClass('nav-active');
+        $('#result-nav').addClass('nav-active');
+        anchorfocus = "result";
     }
 }
