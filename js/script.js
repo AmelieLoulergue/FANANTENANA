@@ -15,28 +15,6 @@ function change() {
 
 change()
 
-$('nav').hover(function() {
-    $('.navp').css({
-        'opacity' : '1',
-        'right' : '0'
-    });
-    $('nav').css({
-        'width': '260px',
-        'background': 'rgba(0,0,0,.5)'
-    });
-    $('.logo').css({'filter': 'brightness(1)'})
-}, function() {
-    $('.navp').css({
-        'opacity' : '0',
-        'right' : '250px'
-    });
-    $('nav').css({
-        'width': '80px',
-        'background': 'rgba(0,0,0,.2)'
-    });
-    $('.logo').css({'filter': 'brightness(10)'})
-});
-
 $('document').ready(function() {    
 
     //Smooth scroll script
@@ -260,23 +238,25 @@ function nav_active() {
     y = y + h/2;
 
     if (y >= 0 && y < donation && anchorfocus !== "about") {
-        $('.nav-active').removeClass('nav-active');
-        $('#about-nav').addClass('nav-active');
+        $('.nav-active').removeClass('nav-active nav-scroll');
+        $('#about-nav').addClass('nav-active nav-scroll');
         anchorfocus = "about";
     }
     if (y >= donation && y < testimonial && anchorfocus !== "donation") {
-        $('.nav-active').removeClass('nav-active');
-        $('#donation-nav').addClass('nav-active');
+        $('.nav-active').removeClass('nav-active nav-scroll');
+        $('#donation-nav').addClass('nav-active nav-scroll');
         anchorfocus = "donation";
     }
     if (y >= testimonial && y < result && anchorfocus !== "testimonial") {
-        $('.nav-active').removeClass('nav-active');
-        $('#testimonial-nav').addClass('nav-active');
+        $('.nav-active').removeClass('nav-active nav-scroll');
+        $('#testimonial-nav').addClass('nav-active nav-scroll');
         anchorfocus = "testimonial";
     }
     if (y >= result && anchorfocus !== "result") {
-        $('.nav-active').removeClass('nav-active');
-        $('#result-nav').addClass('nav-active');
+        $('.nav-active').removeClass('nav-active nav-scroll');
+        $('#result-nav').addClass('nav-active nav-scroll');
         anchorfocus = "result";
     }
 }
+
+$('.inline-item').hover(function() {$(this).not('.nav-scroll').addClass('nav-active')}, function() {$(this).not('.nav-scroll').removeClass('nav-active')})
