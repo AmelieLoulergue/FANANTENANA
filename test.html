@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cards swiper</title>
+
+    <!-- swipper.js -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+
+</head>
+<body>
+
+<style>
+  /* Testimonial section */
+#testimonial {
+    margin: 150px auto;
+    position: relative;
+}
+.testimonial-container {
+    position: relative;
+}
+.swiper-container {
+    margin: 40px auto;
+    padding: 40px;
+    width: 80%;
+}
+.swiper-slide {
+    text-align: center;
+    height: auto;
+    min-height: 300px;
+    box-shadow: 0px 20px 30px #0000000f;
+    background: white;
+    border-radius: 15px;
+    width: auto;
+    opacity: 0;
+}
+
+.swiper-slide-active {
+    display: flex;
+}
+
+.swiper-slide-active, .swiper-slide-next, .swiper-slide-prev {
+    opacity: 1;
+}
+
+.swiper-button-prev, .swiper-button-next {
+    background: linear-gradient(90deg, rgba(67,134,255,1) 0%, rgba(65,170,249,1) 50%, rgba(14,194,240,1) 100%);
+    color: white;
+    border-radius: 50%;
+    height: 60px;
+    width: 60px;
+    box-shadow: 0px 8px 14px #00000040;
+}
+.swiper-button-prev::after, .swiper-button-next::after {
+    font-size: 20px;
+}
+.full-height {
+    height: 100%;
+}
+.card-img-2 {
+    background-image: linear-gradient(120deg, #a1c4fd, #c2e9fb);
+}
+.card-img-2::before {
+    background-image: url(img/mask/img-bg2.png);
+}
+.card-img-3 {
+    background-image: linear-gradient(225deg,#0abac2,#b2de94);
+}
+.card-img-3::before {
+    transform: rotate(180deg);
+}
+.card-img-4 {
+    background-image: linear-gradient(135deg,#8254e5,#83afe3);
+}
+.card-img-4::before {
+    background-image: url(img/mask/img-bg2.png);
+    transform: rotate(180deg);
+}
+
+@media screen and (max-width: 650px) {
+    .swiper-container {
+        padding: 0;
+        box-shadow: 0px 20px 30px #0000000f;
+    }
+    .swiper-button-prev, .swiper-button-next {
+        height: 40px;
+        width: 40px;
+    }
+    .swiper-button-next {
+        right: -20px;
+    }
+    .swiper-button-prev {
+        left: -20px;
+    }
+    .card-img img {
+        height: 125px;
+    }
+    .card-text p {
+        font-size: 1rem;
+        margin: 20px;
+    }
+}
+
+.card p, #about p {
+    margin: 40px 45px;
+    text-align: justify;
+    font-size: 18px;
+    color: #2f2f2f;
+    vertical-align: middle;
+    display: inline-flex;
+}
+.card h2 {
+    font-family: 'Courgette', cursive;
+    font-size: 35px;
+    width: fit-content;
+    margin: 20px auto;
+    background: linear-gradient(90deg, rgba(67,134,255,1) 0%, rgba(65,170,249,1) 50%, rgba(14,194,240,1) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+#about .wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+}
+.card img {
+    clip-path: circle(50%);
+    height: 250px;
+    transition: all .5s ease;
+    text-align: center;
+    margin: auto;
+}
+.card {
+    width: 100%;
+    overflow: hidden;
+    border-radius: 15px;
+}
+.card div {
+    width: 50%;
+}
+.card-l {
+    float: left;
+}
+.card-r {
+    float: right;
+}
+.card-img {
+    background-image: linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%);
+    height: 100%;
+    display: inline-flex;
+    position: relative;
+}
+.card-img::before {
+    width: 100%;
+    height: 100%;
+    content: "";
+    position: absolute;
+    z-index: 0;
+    top: 0;
+    right: 0;
+    background-image: url(img/mask/img-bg.png);
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    background-size: 100%;
+}
+.mame .card-img::before {
+    transform: rotate(180deg);
+}
+.img-mame {
+    background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+}
+.mame {
+    margin-bottom: 150px !important;
+}
+
+@media screen and (max-width: 900px) {
+    .card-l, .card-r {
+        float: initial;
+    }
+    .card div {
+        width: 100%;
+    }
+    .card-img {
+        height: fit-content;
+        padding: 20px 0;
+    }
+    #about img {
+        height: 125px;
+    }
+    #about h2 {
+        margin: 20px auto;
+    }
+    #about p {
+        margin: 10px 45px 20px 45px;
+    }
+}
+@media screen and (max-width: 425px) {
+    #about p {
+        margin: 30px 0;
+        font-size: 1rem;
+    }
+    .card-text p {
+        margin: 30px !important;
+    }
+}
+
+</style>
+
+
+  <div id="testimonial" class="container">
+    <h1>
+         Témoignages de donateurs 
+    </h1>
+
+    <div class="testimonial-container">
+
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                
+                <div class="swiper-slide">
+                    <div class="card full-height">
+                    <div class="card-l card-img">
+                        <img src="img/pape-pp.jpg">
+                    </div>
+                    <div class="card-r card-text">
+                        <h2>Papé</h2>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt illo iure similique quas alias repellat cupiditate excepturi quam, nihil optio eum velit eaque quisquam quaerat mollitia accusantium laborum facilis possimus.</p>
+                    </div>
+                    </div>
+                </div>
+            
+                <div class="swiper-slide">
+                    <div class="card full-height">
+                        <div class="card-r card-img card-img-2">
+                            <img src="img/mame-pp.jpg">
+                        </div>
+                        <div class="card-l card-text">
+                            <h2>Mamé</h2>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt illo iure similique quas alias repellat cupiditate excepturi quam, nihil optio eum velit eaque quisquam quaerat mollitia accusantium laborum facilis possimus.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="swiper-slide">
+                    <div class="card full-height">
+                        <div class="card-l card-img card-img-3">
+                            <img src="https://media.istockphoto.com/vectors/confused-young-man-scratching-his-head-emotions-and-body-language-vector-id1029905662?b=1&k=6&m=1029905662&s=612x612&w=0&h=cUSkrdH1Cimf58Wr0x8d8KK3Ctkb0-3-sSh6wbZQkIM=">
+                        </div>
+                        <div class="card-r card-text">
+                            <h2>Hector</h2>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt illo iure similique quas alias repellat cupiditate excepturi quam, nihil optio eum velit eaque quisquam quaerat mollitia accusantium laborum facilis possimus.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="swiper-slide">
+                    <div class="card full-height">
+                        <div class="card-r card-img card-img-4">
+                            <img src="https://cdn.dribbble.com/users/2530857/screenshots/5448238/immamul-day-2.png">
+                        </div>
+                        <div class="card-l card-text">
+                            <h2>Jean-Pedro</h2>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt illo iure similique quas alias repellat cupiditate excepturi quam, nihil optio eum velit eaque quisquam quaerat mollitia accusantium laborum facilis possimus.</p>
+                        </div>
+                    </div>
+                </div>
+            
+            </div>
+            
+        </div>
+    </div>
+    
+</div>
+
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+  <script>
+    const swiper = new Swiper('.swiper-container', {
+
+direction: 'horizontal',
+loop: true,
+speed: 500,
+effect: "coverflow",
+centeredSlides: true,
+coverflowEffect: {
+          rotate: 5,
+          stretch: 50,
+          depth: 100,
+          modifier: 1,
+          slideShadows: false,
+        },
+
+spaceBetween: 100,
+
+slidesPerView: 1.5,
+
+keyboard: {
+    enabled: true,
+},
+mousewheel: true,
+grabCursor: true,
+autoplay: {
+    delay: 5000,
+    disableOnInteraction: true,
+},
+
+});
+  </script>
+</body>
+</html>
