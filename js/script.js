@@ -30,7 +30,7 @@ $('document').ready(function() {
     $(document).on('scroll', nav_active);
 
     //Facebook cards loading
-    var token = "EAAEbgHkKPzcBACoqww2Wj9v5imehyE3E2TxemsZA07cct2GdBDP0Ew3X1JxOEUpI49dGgzTZBButxPnOzvv9a5VPZCZClmRZAxECKtJVf6OZBFLLJBlJbDlxUdT5ZB9OhqcZCUQ5GPBE8wIK7MLaCDfCZCqMfekE1ZCGIxHZBm6FqOODnvgMHA7iT1l";
+var token = "EAAEbgHkKPzcBADDkoneTZBqjhAU9ZBsKAxNCqFDS4RJiz66OAykbvkHZCCCk3CS5sgbBmfZC5npHYfusFmPtC7o3fGCFAV5ca25ZCU4S0kHqlhZBAkxjOxHhdJVnbbchfaLymZBGk3cyIFa1EkV0YHJdyULiGIBoxaMPZAwn2zp4vVqJ744WdUynJo5nCs9J9SQdrmbKaMrDY9hemQw4Wnfp";
 var requestURL = 'https://graph.facebook.com/837110672968905?fields=feed.limit(6){message,properties,attachments,permalink_url}&access_token=' + token;
 
 var request = new XMLHttpRequest();
@@ -140,15 +140,12 @@ const swiper = new Swiper('.swiper-container', {
     effect: 'coverflow',
     coverflowEffect: {
         rotate: 0,
-        stretch: 0,
+        stretch: -50,
         depth: 1200,
         modifier: 1,
         slideShadows: false,
     },
-
-    
-    
-    slidesPerView: 1.5,
+    slidesPerView: 1,
     
     keyboard: {
         enabled: true,
@@ -160,41 +157,33 @@ const swiper = new Swiper('.swiper-container', {
         disableOnInteraction: false,
         pauseOnMouseEnter: true,
     },
-
-    on: {
-        init: function() {
-            var n = this.activeIndex;
-
-            this.slides[n-2].classList.add('slide-visible');
-            this.slides[n-1].classList.add('slide-visible');
-            this.slides[n].classList.add('slide-visible');
-            this.slides[n+1].classList.add('slide-visible');
-            this.slides[n+2].classList.add('slide-visible');
-        }
-    },
+    loopedSlides: 16,
 
     // Responsive breakpoints
     breakpoints: {
         1650: {
-            slidesPerView: 3
+            slidesPerView: 5
         },
-        650: {
-            slidesPerView: 2
+        1000: {
+            slidesPerView: 2,
+            coverflowEffect: {
+                stretch: -100
+            }
         },
     },
 });
 
-//function on slide change for fading cards
-swiper.on('slideChange breakpoint', function() {
-    var n = swiper.activeIndex;
-
-    $('.slide-visible').removeClass('slide-visible');
-
-    swiper.slides[n-2].classList.add('slide-visible');
-    swiper.slides[n-1].classList.add('slide-visible');
-    swiper.slides[n].classList.add('slide-visible');
-    swiper.slides[n+1].classList.add('slide-visible');
-    swiper.slides[n+2].classList.add('slide-visible');
+const mameAtropos = Atropos({
+    el: '.mame-atropos',
+    activeOffset: 30,
+    rotateXMax: 5,
+    rotateYMax: 5,
+});
+const papeAtropos = Atropos({
+    el: '.pape-atropos',
+    activeOffset: 30,
+    rotateXMax: 5,
+    rotateYMax: 5,
 });
 
 
@@ -204,12 +193,24 @@ $('#parrain-btn').hover(function() {
 
     var diagonale = Math.sqrt((vw/2) * (vw/2) + vh * vh);
     
-    $("#landing-img-light").css({
-        'clip-path': 'circle('+diagonale+'px at 50% 90vh)'
-    });
-    $("#lightlogo").css({
-        'clip-path': 'circle('+diagonale+'px at 50% 90vh)'
-    });
+    $({step: 0}).animate({step: diagonale}, {
+        step: function(val) {
+           // val equals the current step
+            $("#landing-img-light").css({
+                'clip-path': 'circle('+val+'px at 50% 90vh)'
+            });
+            $("#lightlogo").css({
+                'clip-path': 'circle('+val+'px at 50% 90vh)'
+            });
+        }
+     });
+
+    // $("#landing-img-light").css({
+    //     'clip-path': 'circle('+diagonale+'px at 50% 90vh)'
+    // });
+    // $("#lightlogo").css({
+    //     'clip-path': 'circle('+diagonale+'px at 50% 90vh)'
+    // });
 },
 function() {
     $("#landing-img-light").css({

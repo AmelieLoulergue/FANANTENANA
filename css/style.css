@@ -1,8 +1,11 @@
-
 html, body {
     margin: 0;
     padding: 0;
     font-family: 'Poppins', sans-serif;
+}
+
+.atropos-shadow {
+    opacity: .3;
 }
 
 :root {
@@ -100,7 +103,7 @@ h1::before, h1::after {
 #landing-img {
     min-height: 550px;
     height: calc(100vh + 200px);
-    background: url(img/landing-dark.jpg) top no-repeat;
+    background: url(../img/landing-dark.jpg) top no-repeat;
     background-size: cover;
     position: relative;
 }
@@ -152,7 +155,7 @@ h1::before, h1::after {
     width: auto;
     min-height: 200px;
     height: 40vh;
-    background: url(img/logo/logo-hd.png) center no-repeat;
+    background: url(../img/logo/logo.svg) center no-repeat;
     background-size: contain;
 }
 .titlelogo:first-child {
@@ -179,7 +182,7 @@ h1::before, h1::after {
     height: 100%;
     min-height: 500px;
     width: 100%;
-    background: url(img/landing-light.jpg) top no-repeat;
+    background: url(../img/landing-light.jpg) top no-repeat;
     background-size: cover;
     clip-path: circle(0% at 50% 80%);
     transition: all 1s ease;
@@ -192,6 +195,7 @@ h1::before, h1::after {
     max-width: 100vw;
     max-height: 200px;
     transform: translateY(1px);
+    transition: all 1s ease;
 }
 
 @media screen and (max-width: 768px) {
@@ -464,7 +468,8 @@ h1::before, h1::after {
 }
 .card img {
     clip-path: circle(50%);
-    height: 250px;
+    max-height: 250px;
+    max-width: 100%;
     transition: all .5s ease;
     text-align: center;
     margin: auto;
@@ -473,6 +478,8 @@ h1::before, h1::after {
     width: 100%;
     overflow: hidden;
     border-radius: 15px;
+    background-color: white;
+    display: flex;
 }
 .card div {
     width: 50%;
@@ -481,11 +488,10 @@ h1::before, h1::after {
     float: left;
 }
 .card-r {
-    float: right;
+    flex-direction: row-reverse;
 }
 .card-img {
     background-image: linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%);
-    height: 100%;
     display: inline-flex;
     position: relative;
 }
@@ -497,7 +503,7 @@ h1::before, h1::after {
     z-index: 0;
     top: 0;
     right: 0;
-    background-image: url(img/mask/img-bg.png);
+    background-image: url(../img/mask/img-bg.png);
     background-repeat: no-repeat;
     background-position: 0vmin 0vmin;
     background-size: 110vmin;
@@ -519,9 +525,6 @@ h1::before, h1::after {
 .img-mame {
     background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
 }
-.mame {
-    margin-bottom: 150px !important;
-}
 
 @media screen and (max-width: 900px) {
     .card-l, .card-r {
@@ -531,7 +534,6 @@ h1::before, h1::after {
         width: 100%;
     }
     .card-img {
-        height: fit-content;
         padding: 20px 0;
     }
     #about img {
@@ -610,6 +612,52 @@ h1::before, h1::after {
 .donation-item:nth-child(5) div {background-image: var(--grad5);}
 .donation-item:nth-child(6) div {background-image: var(--grad6);}
 
+/* Wave animation */
+.waves {
+    position:relative;
+    width: 100%;
+    height:15vh;
+    margin-bottom:-7px; /*Fix for safari gap*/
+    min-height:100px;
+    max-height:150px;
+  }
+
+.parallax > use {
+    animation: move-forever 25s cubic-bezier(.55,.5,.45,.5)     infinite;
+  }
+  .parallax > use:nth-child(1) {
+    animation-delay: -2s;
+    animation-duration: 11s;
+  }
+  .parallax > use:nth-child(2) {
+    animation-delay: -3s;
+    animation-duration: 10s;
+  }
+  .parallax > use:nth-child(3) {
+    animation-delay: -4s;
+    animation-duration: 13s;
+  }
+  .parallax > use:nth-child(4) {
+    animation-delay: -5s;
+    animation-duration: 20s;
+  }
+  @keyframes move-forever {
+    0% {
+     transform: translate3d(-90px,0,0);
+    }
+    100% { 
+      transform: translate3d(85px,0,0);
+    }
+  }
+  /*Shrinking for mobile*/
+  @media (max-width: 768px) {
+    .waves {
+      height:40px;
+      min-height:40px;
+    }
+  }
+
+
 /* Testimonial section */
 #testimonial {
     margin: 150px auto;
@@ -617,45 +665,41 @@ h1::before, h1::after {
 }
 .testimonial-container {
     position: relative;
-    overflow: hidden;
-}
-.swiper-container {
-    margin: 40px auto;
-    padding: 40px;
+    overflow-x: hidden;
+    height: max-content;
 }
 .swiper-slide {
     text-align: center;
     height: auto;
-    min-height: 600px;
+    min-height: 200px;
     box-shadow: 0px 20px 30px #0000000f;
     background: white;
     border-radius: 15px;
     width: auto;
-    filter: blur(3px);
-    opacity: 0;
+    filter: blur(2px);
+    /* opacity: 0; */
     transition: all .5s ease;
+    margin: 40px auto;
 }
-.swiper-slide-active, .scdSlide, .trdSlide {
+
+.swiper-slide-active {
     opacity: 1;
 }
 
-.slide-visible {
-    opacity: 1;
-}
+/* .swiper-slide-prev, .swiper-slide-next {
+    opacity: .5;
+    transition: all .5s ease;
+} */
 
 .swiper-slide-active {
     display: flex;
     filter: blur(0);
 }
-
-.full-height {
-    height: 100%;
-}
 .card-img-2 {
     background-image: linear-gradient(120deg, #a1c4fd, #c2e9fb);
 }
 .card-img-2::before {
-    background-image: url(img/mask/img-bg2.png);
+    background-image: url(../img/mask/img-bg2.png);
     animation-delay: .5s;
     animation-direction: alternate-reverse;
 }
@@ -670,7 +714,7 @@ h1::before, h1::after {
     background-image: linear-gradient(135deg,#8254e5,#83afe3);
 }
 .card-img-4::before {
-    background-image: url(img/mask/img-bg2.png);
+    background-image: url(../img/mask/img-bg2.png);
     transform: rotate(180deg);
     animation-delay: 1s;
     animation-direction: alternate-reverse;
@@ -694,7 +738,6 @@ h1::before, h1::after {
         width: 100%;
     }
     .swiper-slide .card-img {
-        height: fit-content;
         padding: 20px 0;
     }
 }
@@ -720,7 +763,7 @@ h1::before, h1::after {
     z-index: 0;
     top: 0;
     left: 0;
-    background-image: url(img/mask/infinite-large.png);
+    background-image: url(../img/mask/infinite-large.png);
     background-repeat: repeat-y;
     background-position: 0 0;
     background-size: 100vmax;
@@ -865,16 +908,22 @@ h1::before, h1::after {
     animation-delay: var(--delay);
 }
 .user img {
-    height: 50px;
+    height: 40px;
 }
 .user img.fblogo {
     justify-self: flex-end;
     margin-left: auto;
     margin-right: 50px;
 }
-.user h1 {
+/* .user h1 {
     margin: 0 0 0 20px;
+} */
+.user h2 {
+    margin-block: none;
+    margin: auto;
+    font-size: 1.3em;
 }
+
 
 #FB_content .FBcard {
     background: white;
@@ -998,9 +1047,10 @@ h1::before, h1::after {
     line-height: 70px;
 }
 
+
 /* Footer */
 footer {
-    background: #151D2D url(img/mask/Footer-bg.png) repeat;
+    background: #151D2D url(../img/mask/Footer-bg.png) repeat;
     text-align: center;
     color: white;
 }
