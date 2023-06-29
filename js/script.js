@@ -157,7 +157,6 @@ const swiper = new Swiper('.swiper-container', {
         disableOnInteraction: false,
         pauseOnMouseEnter: true,
     },
-    loopedSlides: 16,
 
     // Responsive breakpoints
     breakpoints: {
@@ -187,39 +186,45 @@ const papeAtropos = Atropos({
 });
 
 
-$('#parrain-btn').hover(function() {
-    const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
-    const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
+// $('#parrain-btn').hover(function() {
+//     const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+//     const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
 
-    var diagonale = Math.sqrt((vw/2) * (vw/2) + vh * vh);
+//     var diagonale = Math.sqrt((vw/2) * (vw/2) + vh * vh);
     
-    $({step: 0}).animate({step: diagonale}, {
-        step: function(val) {
-           // val equals the current step
-            $("#landing-img-light").css({
-                'clip-path': 'circle('+val+'px at 50% 90vh)'
-            });
-            $("#lightlogo").css({
-                'clip-path': 'circle('+val+'px at 50% 90vh)'
-            });
-        }
-     });
+//     $({step: 0}).animate({step: diagonale}, {
+//         step: function(val) {
+//            // val equals the current step
+//             $("#landing-img-light").css({
+//                 'clip-path': 'circle('+val+'px at 50% 90vh)'
+//             });
+//             $("#lightlogo").css({
+//                 'clip-path': 'circle('+val+'px at 50% 90vh)'
+//             });
+//         }
+//      });
 
-    // $("#landing-img-light").css({
-    //     'clip-path': 'circle('+diagonale+'px at 50% 90vh)'
-    // });
-    // $("#lightlogo").css({
-    //     'clip-path': 'circle('+diagonale+'px at 50% 90vh)'
-    // });
-},
-function() {
-    $("#landing-img-light").css({
-        'clip-path': 'circle(0% at 50% 90vh)'
-    });
+//     // $("#landing-img-light").css({
+//     //     'clip-path': 'circle('+diagonale+'px at 50% 90vh)'
+//     // });
+//     // $("#lightlogo").css({
+//     //     'clip-path': 'circle('+diagonale+'px at 50% 90vh)'
+//     // });
+// },
+// function() {
+//     $("#landing-img-light").css({
+//         'clip-path': 'circle(0% at 50% 90vh)'
+//     });
 
-    $("#lightlogo").css({
-        'clip-path': 'circle(0% at 50% 90vh)'
-    });
+//     $("#lightlogo").css({
+//         'clip-path': 'circle(0% at 50% 90vh)'
+//     });
+// })
+
+$('#parrain-btn').hover(function() {
+    $('#landing-img-light').css({"clip-path": "circle(100% at 50% 80vh)"})
+}, function() {
+    $('#landing-img-light').css({"clip-path": "circle(0% at 50% 80vh)"})
 })
 
 var anchorfocus; var h; var result; var testimonial; var donation; var about; var y;
@@ -229,14 +234,11 @@ function initsectioncoor() {
     donation = $('#donation').position().top;
     testimonial = $('#testimonial').position().top;
     result = $('#result').position().top;
-    
-    h = $(window).height();
 }
 initsectioncoor();
 
 function nav_active() {
     y = $(window).scrollTop();
-    y = y + h/2;
 
     if (y >= 0 && y < donation && anchorfocus !== "about") {
         $('.nav-active').removeClass('nav-active nav-scroll');
