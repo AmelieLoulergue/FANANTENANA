@@ -18,6 +18,36 @@ function change() {
 
 change();
 
+var wellx;
+var welly;
+var bookx;
+var booky;
+var foodx;
+var foody;
+var healthx;
+var healthy;
+// define x and y of each element, and change it on resize
+function donationPosition() {
+    wellx = $(".wellctn").position().left;
+    welly = $(".wellctn").position().top;
+
+    bookx = $(".bookctn").position().left;
+    booky = $(".bookctn").position().top;
+
+    foodx = $(".foodctn").position().left;
+    foody = $(".foodctn").position().top;
+
+    healthx = $(".healthctn").position().left;
+    healthy = $(".healthctn").position().top;
+}
+donationPosition();
+
+//on window resize
+$("window").on("resize", donationPosition());
+
+//function when the mouse move to interact with the ::before element
+$("window").on("mousemove", function () {});
+
 $("document").ready(function () {
     //Smooth scroll script
     $(".js-scrollTo").on("click", function () {
@@ -31,6 +61,9 @@ $("document").ready(function () {
     //nav-active
     nav_active();
     $(document).on("scroll", nav_active);
+
+    //Parallax donation shadow
+    $(window).on("mousemove", function (e) {});
 
     //Facebook cards loading
     var token =

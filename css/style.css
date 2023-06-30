@@ -714,24 +714,40 @@ h1::after {
     position: relative;
     margin-bottom: 20px;
 }
+:root {
+    --well-x: 10px;
+    --well-y: 10px;
+    --book-x: 10px;
+    --book-y: 10px;
+    --food-x: 10px;
+    --food-y: 10px;
+    --health-x: 10px;
+    --health-y: 10px;
+}
 .donation-svg::before {
     content: url(../img/icons/well.svg);
     height: 100%;
     width: 100%;
     position: absolute;
-    top: 10px;
-    left: 10px;
+    top: var(--well-y);
+    left: var(--well-x);
     z-index: 0;
     filter: drop-shadow(0 0 10px rgb(0, 0, 0));
 }
 .donation-item:nth-child(2) .donation-svg::before {
     content: url(../img/icons/book.svg);
+    top: var(--book-y);
+    left: var(--book-x);
 }
 .donation-item:nth-child(3) .donation-svg::before {
     content: url(../img/icons/food.svg);
+    top: var(--food-y);
+    left: var(--food-x);
 }
 .donation-item:nth-child(4) .donation-svg::before {
     content: url(../img/icons/health.svg);
+    top: var(--health-y);
+    left: var(--health-x);
 }
 .donation-svg svg {
     position: relative;
