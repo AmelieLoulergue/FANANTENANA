@@ -16,7 +16,7 @@ body {
         rgba(65, 170, 249, 1) 50%,
         rgba(14, 194, 240, 1) 100%
     );
-    --grad1: linear-gradient(45deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%);
+    --grad1: linear-gradient(45deg, #ff9a9e 0%, #fad0c4 100%);
     --grad2: linear-gradient(120deg, #a1c4fd, #c2e9fb);
     --grad3: linear-gradient(225deg, #0abac2, #b2de94);
     --grad4: linear-gradient(120deg, #8254e5, #83afe3);
@@ -708,7 +708,33 @@ h1::after {
     fill: #ffffff;
 }
 .donation-item h4 {
-    margin-top: 0;
+    font-weight: 300;
+}
+.donation-svg {
+    position: relative;
+    margin-bottom: 20px;
+}
+.donation-svg::before {
+    content: url(../img/icons/well.svg);
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 0;
+    filter: drop-shadow(0 0 10px rgb(0, 0, 0));
+}
+.donation-item:nth-child(2) .donation-svg::before {
+    content: url(../img/icons/book.svg);
+}
+.donation-item:nth-child(3) .donation-svg::before {
+    content: url(../img/icons/food.svg);
+}
+.donation-item:nth-child(4) .donation-svg::before {
+    content: url(../img/icons/health.svg);
+}
+.donation-svg svg {
+    position: relative;
 }
 
 /* Wave animation */
