@@ -578,7 +578,8 @@ h1::before, h1::after {
     position: absolute;
     height: 100%;
     width: 100%;
-    z-index: 2;
+    z-index: 0;
+    top: 0;
 }
 
 .donation-container {
@@ -588,27 +589,17 @@ h1::before, h1::after {
     justify-content: center;
     align-items: center;
     color: white;
+    gap: 7.5%;
+    margin-top: 2rem;
 }
 .donation-item {
-    flex: 0 0 33.33333%;
+    flex: 0 0 35%;
     text-align: center;
+    min-width: 300px;
 }
-.donation-item div {
-    border-radius: 100%;
-    background-image: var(--grad1);
-    display: flex;
-    margin: auto;
-    padding: 30px;
-}
-.donation-item div svg {
-    height: 30px;
-    width: 30px;
-}
-.donation-item:nth-child(2) div {background-image: var(--grad2);}
-.donation-item:nth-child(3) div {background-image: var(--grad3);}
-.donation-item:nth-child(4) div {background-image: var(--grad4);}
-.donation-item:nth-child(5) div {background-image: var(--grad5);}
-.donation-item:nth-child(6) div {background-image: var(--grad6);}
+.donation-item h4 {
+    margin-top: 0;
+}        
 
 /* Wave animation */
 .waves {
