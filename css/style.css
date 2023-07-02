@@ -724,6 +724,9 @@ h1::after {
     --health-x: 10px;
     --health-y: 10px;
 }
+.donation-svg {
+    transform: translate(calc(var(--well-x) / 4), calc(var(--well-y) / 4));
+}
 .donation-svg::before {
     content: url(../img/icons/well.svg);
     height: 100%;
@@ -734,15 +737,24 @@ h1::after {
     z-index: 0;
     filter: drop-shadow(0 0 10px rgb(0, 0, 0));
 }
+.donation-item:nth-child(2) .donation-svg {
+    transform: translate(calc(var(--book-x) / 4), calc(var(--book-y) / 4));
+}
 .donation-item:nth-child(2) .donation-svg::before {
     content: url(../img/icons/book.svg);
     top: var(--book-y);
     left: var(--book-x);
 }
+.donation-item:nth-child(3) .donation-svg {
+    transform: translate(calc(var(--food-x) / 4), calc(var(--food-y) / 4));
+}
 .donation-item:nth-child(3) .donation-svg::before {
     content: url(../img/icons/food.svg);
     top: var(--food-y);
     left: var(--food-x);
+}
+.donation-item:nth-child(4) .donation-svg {
+    transform: translate(calc(var(--health-x) / 4), calc(var(--health-y) / 4));
 }
 .donation-item:nth-child(4) .donation-svg::before {
     content: url(../img/icons/health.svg);

@@ -26,27 +26,51 @@ var foodx;
 var foody;
 var healthx;
 var healthy;
+var windowx;
+var windowy;
+var halfwindowx;
 // define x and y of each element, and change it on resize
 function donationPosition() {
-    wellx = $(".wellctn").position().left;
-    welly = $(".wellctn").position().top;
+    wellx = Math.round($(".wellctn").offset().left + $(".wellctn").width() / 2);
+    welly = $(".wellctn").offset().top + $(".wellctn").height() / 2;
 
-    bookx = $(".bookctn").position().left;
-    booky = $(".bookctn").position().top;
+    bookx = Math.round($(".bookctn").offset().left + $(".bookctn").width() / 2);
+    booky = $(".bookctn").offset().top + $(".bookctn").height() / 2;
 
-    foodx = $(".foodctn").position().left;
-    foody = $(".foodctn").position().top;
+    foodx = Math.round($(".foodctn").offset().left + $(".foodctn").width() / 2);
+    foody = $(".foodctn").offset().top + $(".foodctn").height() / 2;
 
-    healthx = $(".healthctn").position().left;
-    healthy = $(".healthctn").position().top;
+    healthx = Math.round(
+        $(".healthctn").offset().left + $(".healthctn").width() / 2
+    );
+    healthy = $(".healthctn").offset().top + $(".healthctn").height() / 2;
+
+    windowx = $(window).width();
+    windowy = $(window).height();
+    halfwindowx = windowx / 2;
 }
-donationPosition();
 
-//on window resize
-$("window").on("resize", donationPosition());
+//Execute the fct when DOM and css is loaded
+$(window).on("load resize", function () {
+    donationPosition();
+});
 
 //function when the mouse move to interact with the ::before element
-$("window").on("mousemove", function () {});
+// $("window").on("mousemove", function (e) {
+//     var miny = welly - windowy;
+//     var maxy = healthy + windowy;
+
+//     //only if mouse is on viewport of the el
+//     if (e.pageY > miny && e.pageY < maxy) {
+//         //for if the mouse is on top of the el
+//         if (e.pageY > welly) {
+//             let shadowY = (e.pageY * -10) / (welly - windowy);
+//             $(".wellctn").css("--well-y", shadowY); // Modifiez la propriété top
+//         }
+
+//         //for if the mouse is under the el
+//     }
+// });
 
 $("document").ready(function () {
     //Smooth scroll script
@@ -63,133 +87,197 @@ $("document").ready(function () {
     $(document).on("scroll", nav_active);
 
     //Parallax donation shadow
-    $(window).on("mousemove", function (e) {});
+    $(window).on("mousemove", function (e) {
+        var miny = welly - windowy;
+        var maxy = healthy + windowy;
+
+        //only if mouse is on viewport of the el
+        if (e.pageY > miny && e.pageY < maxy) {
+            //for the y-axis shadow
+            if (e.pageY > welly - windowy && e.pageY < welly + windowy) {
+                let shadowY = ((e.pageY - welly) * -20) / windowy + "px";
+                $(".wellctn").css("--well-y", shadowY);
+            }
+            if (e.pageY > booky - windowy && e.pageY < booky + windowy) {
+                let shadowY = ((e.pageY - booky) * -20) / windowy + "px";
+                $(".bookctn").css("--book-y", shadowY);
+            }
+            if (e.pageY > foody - windowy && e.pageY < foody + windowy) {
+                let shadowY = ((e.pageY - foody) * -20) / windowy + "px";
+                $(".foodctn").css("--food-y", shadowY);
+            }
+            if (e.pageY > healthy - windowy && e.pageY < healthy + windowy) {
+                let shadowY = ((e.pageY - healthy) * -20) / windowy + "px";
+                $(".healthctn").css("--health-y", shadowY);
+            }
+
+            //for the x-axis shadow
+
+            //if the el is on the left of the screen
+            if (wellx < halfwindowx) {
+                let shadowX =
+                    ((e.pageX - wellx) * -20) / (windowx - wellx) + "px";
+                $(".wellctn").css("--well-x", shadowX);
+            }
+            if (bookx < halfwindowx) {
+                let shadowX =
+                    ((e.pageX - bookx) * -20) / (windowx - bookx) + "px";
+                $(".bookctn").css("--book-x", shadowX);
+            }
+            if (foodx < halfwindowx) {
+                let shadowX =
+                    ((e.pageX - foodx) * -20) / (windowx - foodx) + "px";
+                $(".foodctn").css("--food-x", shadowX);
+            }
+            if (healthx < halfwindowx) {
+                let shadowX =
+                    ((e.pageX - healthx) * -20) / (windowx - healthx) + "px";
+                $(".healthctn").css("--health-x", shadowX);
+            }
+
+            //if the el is on the right or the center of the screen
+            if (wellx > halfwindowx || wellx == halfwindowx) {
+                let shadowX = ((e.pageX - wellx) * -20) / wellx + "px";
+                $(".wellctn").css("--well-x", shadowX);
+            }
+            if (bookx > halfwindowx || bookx == halfwindowx) {
+                let shadowX = ((e.pageX - bookx) * -20) / bookx + "px";
+                $(".bookctn").css("--book-x", shadowX);
+            }
+            if (foodx > halfwindowx || foodx == halfwindowx) {
+                let shadowX = ((e.pageX - foodx) * -20) / foodx + "px";
+                $(".foodctn").css("--food-x", shadowX);
+            }
+            if (healthx > halfwindowx || healthx == halfwindowx) {
+                let shadowX = ((e.pageX - healthx) * -20) / healthx + "px";
+                $(".healthctn").css("--health-x", shadowX);
+            }
+        }
+    });
 
     //Facebook cards loading
-    var token =
-        "EAAEbgHkKPzcBADDkoneTZBqjhAU9ZBsKAxNCqFDS4RJiz66OAykbvkHZCCCk3CS5sgbBmfZC5npHYfusFmPtC7o3fGCFAV5ca25ZCU4S0kHqlhZBAkxjOxHhdJVnbbchfaLymZBGk3cyIFa1EkV0YHJdyULiGIBoxaMPZAwn2zp4vVqJ744WdUynJo5nCs9J9SQdrmbKaMrDY9hemQw4Wnfp";
-    var requestURL =
-        "https://graph.facebook.com/837110672968905?fields=feed.limit(6){message,properties,attachments,permalink_url}&access_token=" +
-        token;
+    // var token =
+    //     "EAAEbgHkKPzcBADDkoneTZBqjhAU9ZBsKAxNCqFDS4RJiz66OAykbvkHZCCCk3CS5sgbBmfZC5npHYfusFmPtC7o3fGCFAV5ca25ZCU4S0kHqlhZBAkxjOxHhdJVnbbchfaLymZBGk3cyIFa1EkV0YHJdyULiGIBoxaMPZAwn2zp4vVqJ744WdUynJo5nCs9J9SQdrmbKaMrDY9hemQw4Wnfp";
+    // var requestURL =
+    //     "https://graph.facebook.com/837110672968905?fields=feed.limit(6){message,properties,attachments,permalink_url}&access_token=" +
+    //     token;
 
-    var request = new XMLHttpRequest();
-    request.open("GET", requestURL);
-    request.responseType = "json";
-    request.send();
+    // var request = new XMLHttpRequest();
+    // request.open("GET", requestURL);
+    // request.responseType = "json";
+    // request.send();
 
-    request.onload = function () {
-        var cards = request.response;
+    // request.onload = function () {
+    //     var cards = request.response;
 
-        displayFB(cards);
-    };
+    //     displayFB(cards);
+    // };
 
-    function displayFB(jsonobj) {
-        var json = jsonobj["feed"].data;
+    // function displayFB(jsonobj) {
+    //     var json = jsonobj["feed"].data;
 
-        for (var i = 0; i < json.length; i++) {
-            var subtitle = json[i].message;
-            var url = json[i].permalink_url;
+    //     for (var i = 0; i < json.length; i++) {
+    //         var subtitle = json[i].message;
+    //         var url = json[i].permalink_url;
 
-            var type = (coverImg = uriimg = undefined);
+    //         var type = (coverImg = uriimg = undefined);
 
-            if (typeof json[i].attachments != "undefined") {
-                var attachments = json[i].attachments.data[0];
+    //         if (typeof json[i].attachments != "undefined") {
+    //             var attachments = json[i].attachments.data[0];
 
-                var type = attachments.type;
-                var coverImg = attachments.media.image.src;
-                var uriimg = attachments.url;
-            }
+    //             var type = attachments.type;
+    //             var coverImg = attachments.media.image.src;
+    //             var uriimg = attachments.url;
+    //         }
 
-            var container = document.createElement("div");
-            container.className = "FBcontainer";
+    //         var container = document.createElement("div");
+    //         container.className = "FBcontainer";
 
-            var header = document.createElement("a");
-            header.innerHTML =
-                '<div class="user"><img src="img/logo/logo-dove-white.png"><h2>Fanantenana</h2><img class="fblogo" src="img/logo/facebook.png"></div>';
-            header.href = "https://www.facebook.com/fanantenana619";
-            header.setAttribute("target", "_blank");
-            container.appendChild(header);
+    //         var header = document.createElement("a");
+    //         header.innerHTML =
+    //             '<div class="user"><img src="img/logo/logo-dove-white.png"><h2>Fanantenana</h2><img class="fblogo" src="img/logo/facebook.png"></div>';
+    //         header.href = "https://www.facebook.com/fanantenana619";
+    //         header.setAttribute("target", "_blank");
+    //         container.appendChild(header);
 
-            var card = document.createElement("div");
-            card.className = "FBcard";
-            var cardContent = document.createElement("div");
-            cardContent.className = "FBcard-content";
-            var h2 = document.createElement("h2");
-            var p = document.createElement("p");
-            var imgContainer = document.createElement("div");
+    //         var card = document.createElement("div");
+    //         card.className = "FBcard";
+    //         var cardContent = document.createElement("div");
+    //         cardContent.className = "FBcard-content";
+    //         var h2 = document.createElement("h2");
+    //         var p = document.createElement("p");
+    //         var imgContainer = document.createElement("div");
 
-            var interaction = document.createElement("div");
-            interaction.className = "interaction";
-            interaction.innerHTML =
-                `<a onclick='window.open("` +
-                url +
-                `", "_blank", "location=yes,height=900,width=500,scrollbars=yes,status=yes")'><button>Commenter</button></a><a onclick='window.open("` +
-                url +
-                `", "_blank", "location=yes,height=900,width=500,scrollbars=yes,status=yes")'><button>J\'aime</button></a><a onclick='window.open("https://www.facebook.com/sharer/sharer.php?u=` +
-                url +
-                `", "_blank", "location=yes,height=600,width=500,scrollbars=yes,status=yes")'><button>Partager</button></a>`;
+    //         var interaction = document.createElement("div");
+    //         interaction.className = "interaction";
+    //         interaction.innerHTML =
+    //             `<a onclick='window.open("` +
+    //             url +
+    //             `", "_blank", "location=yes,height=900,width=500,scrollbars=yes,status=yes")'><button>Commenter</button></a><a onclick='window.open("` +
+    //             url +
+    //             `", "_blank", "location=yes,height=900,width=500,scrollbars=yes,status=yes")'><button>J\'aime</button></a><a onclick='window.open("https://www.facebook.com/sharer/sharer.php?u=` +
+    //             url +
+    //             `", "_blank", "location=yes,height=600,width=500,scrollbars=yes,status=yes")'><button>Partager</button></a>`;
 
-            p.textContent = subtitle;
-            if (typeof json[i].attachments != "undefined") {
-                h2.textContent = attachments.title;
+    //         p.textContent = subtitle;
+    //         if (typeof json[i].attachments != "undefined") {
+    //             h2.textContent = attachments.title;
 
-                if (typeof attachments.title == "undefined") {
-                    h2.textContent = "Nouvelle publication";
-                }
-            } else {
-                h2.textContent = "Nouvelle publication";
-            }
-            cardContent.appendChild(h2);
-            cardContent.appendChild(p);
+    //             if (typeof attachments.title == "undefined") {
+    //                 h2.textContent = "Nouvelle publication";
+    //             }
+    //         } else {
+    //             h2.textContent = "Nouvelle publication";
+    //         }
+    //         cardContent.appendChild(h2);
+    //         cardContent.appendChild(p);
 
-            if (type == "album") {
-                var imgs = attachments.subattachments.data;
+    //         if (type == "album") {
+    //             var imgs = attachments.subattachments.data;
 
-                for (var j = 0; j < imgs.length; j++) {
-                    let albumImg = imgs[j].media.image.src;
-                    let uriimg = imgs[j].url;
+    //             for (var j = 0; j < imgs.length; j++) {
+    //                 let albumImg = imgs[j].media.image.src;
+    //                 let uriimg = imgs[j].url;
 
-                    imgContainer.innerHTML +=
-                        '<a target="_blank" href="' +
-                        uriimg +
-                        '"><img src="' +
-                        albumImg +
-                        '"/></a>';
-                }
+    //                 imgContainer.innerHTML +=
+    //                     '<a target="_blank" href="' +
+    //                     uriimg +
+    //                     '"><img src="' +
+    //                     albumImg +
+    //                     '"/></a>';
+    //             }
 
-                cardContent.appendChild(imgContainer);
-            }
+    //             cardContent.appendChild(imgContainer);
+    //         }
 
-            if (type == "video_autoplay" || type == "video") {
-                imgContainer.innerHTML +=
-                    '<a target="_blank" href="' +
-                    uriimg +
-                    '"><div class="FB_video"><img src="' +
-                    coverImg +
-                    '"/><button class="playbtn">&#9654;</button></div></a>';
-                cardContent.appendChild(imgContainer);
-            }
+    //         if (type == "video_autoplay" || type == "video") {
+    //             imgContainer.innerHTML +=
+    //                 '<a target="_blank" href="' +
+    //                 uriimg +
+    //                 '"><div class="FB_video"><img src="' +
+    //                 coverImg +
+    //                 '"/><button class="playbtn">&#9654;</button></div></a>';
+    //             cardContent.appendChild(imgContainer);
+    //         }
 
-            if (type == "photo") {
-                imgContainer.innerHTML +=
-                    '<a target="_blank" href="' +
-                    uriimg +
-                    '"><img src="' +
-                    coverImg +
-                    '"/></a>';
-                cardContent.appendChild(imgContainer);
-            }
+    //         if (type == "photo") {
+    //             imgContainer.innerHTML +=
+    //                 '<a target="_blank" href="' +
+    //                 uriimg +
+    //                 '"><img src="' +
+    //                 coverImg +
+    //                 '"/></a>';
+    //             cardContent.appendChild(imgContainer);
+    //         }
 
-            card.appendChild(cardContent);
-            card.appendChild(interaction);
-            container.appendChild(card);
-            document.getElementById("FB_content").appendChild(container);
-        }
-    }
+    //         card.appendChild(cardContent);
+    //         card.appendChild(interaction);
+    //         container.appendChild(card);
+    //         document.getElementById("FB_content").appendChild(container);
+    //     }
+    // }
 
-    particlesJS.load("particles-js", "js/particlesjs-config.json", function () {
-        console.log("callback - particles.js config loaded");
-    });
+    particlesJS.load("particles-js", "js/particlesjs-config.json");
 });
 
 const swiper = new Swiper(".swiper-container", {
