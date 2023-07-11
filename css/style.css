@@ -180,7 +180,7 @@ h1::after {
 .titlelogo:nth-child(2) {
     position: absolute;
     top: 0;
-    clip-path: circle(0% at 50% 200%);
+    clip-path: circle(0% at 50% 80vh);
     transition: all 1s ease;
 }
 

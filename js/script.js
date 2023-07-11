@@ -283,7 +283,7 @@ $("document").ready(function () {
 const swiper = new Swiper(".swiper-container", {
     centeredSlides: true,
     direction: "horizontal",
-    loop: true,
+    loop: false,
     speed: 400,
     effect: "coverflow",
     coverflowEffect: {
@@ -309,7 +309,7 @@ const swiper = new Swiper(".swiper-container", {
     // Responsive breakpoints
     breakpoints: {
         1650: {
-            slidesPerView: 5,
+            slidesPerView: 2,
         },
         1000: {
             slidesPerView: 2,
@@ -338,9 +338,15 @@ $("#parrain-btn").hover(
         $("#landing-img-light").css({
             "clip-path": "circle(100% at 50% 80vh)",
         });
+        $("#lightlogo").css({
+            "clip-path": "circle(100% at 50% 80vh)",
+        });
     },
     function () {
         $("#landing-img-light").css({ "clip-path": "circle(0% at 50% 80vh)" });
+        $("#lightlogo").css({
+            "clip-path": "circle(0% at 50% 80vh)",
+        });
     }
 );
 
